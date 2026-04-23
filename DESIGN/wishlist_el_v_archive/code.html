@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wishlist - ELÉVÉ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "tertiary-fixed": "#ffddb0",
+                            "primary-fixed-dim": "#debfc2",
+                            "primary": "#70585b",
+                            "outline-variant": "#d2c3c4",
+                            "on-surface-variant": "#4f4445",
+                            "on-background": "#1a1c1a",
+                            "surface": "#faf9f6",
+                            "on-tertiary": "#ffffff",
+                            "tertiary-container": "#ffdcae",
+                            "surface-tint": "#70585b",
+                            "secondary-fixed": "#ece0d9",
+                            "primary-fixed": "#fbdbde",
+                            "on-secondary": "#ffffff",
+                            "tertiary": "#735a36",
+                            "on-tertiary-fixed-variant": "#594320",
+                            "inverse-primary": "#debfc2",
+                            "secondary-container": "#ece0d9",
+                            "on-surface": "#1a1c1a",
+                            "on-secondary-container": "#6b635d",
+                            "on-primary-fixed-variant": "#574144",
+                            "on-error-container": "#93000a",
+                            "surface-container-highest": "#e3e2e0",
+                            "on-primary-container": "#765e61",
+                            "surface-container-high": "#e9e8e5",
+                            "surface-container-low": "#f4f3f1",
+                            "surface-container-lowest": "#ffffff",
+                            "error": "#ba1a1a",
+                            "on-primary": "#ffffff",
+                            "on-secondary-fixed": "#201a16",
+                            "on-primary-fixed": "#281719",
+                            "outline": "#807475",
+                            "on-secondary-fixed-variant": "#4d4540",
+                            "inverse-surface": "#2f312f",
+                            "inverse-on-surface": "#f2f1ee",
+                            "tertiary-fixed-dim": "#e2c195",
+                            "on-tertiary-container": "#79603a",
+                            "surface-variant": "#e3e2e0",
+                            "surface-dim": "#dbdad7",
+                            "error-container": "#ffdad6",
+                            "surface-container": "#efeeeb",
+                            "primary-container": "#fadadd",
+                            "background": "#faf9f6",
+                            "surface-bright": "#faf9f6",
+                            "on-tertiary-fixed": "#281800",
+                            "secondary-fixed-dim": "#cfc4be",
+                            "secondary": "#655d58",
+                            "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "gutter": "24px",
+                            "md": "16px",
+                            "xs": "4px",
+                            "unit": "4px",
+                            "xxl": "80px",
+                            "sm": "8px",
+                            "lg": "24px",
+                            "xl": "48px",
+                            "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                            "body-sm": [
+                                    "Manrope"
+                            ],
+                            "headline-sm": [
+                                    "Noto Serif"
+                            ],
+                            "display-lg": [
+                                    "Noto Serif"
+                            ],
+                            "body-md": [
+                                    "Manrope"
+                            ],
+                            "body-lg": [
+                                    "Manrope"
+                            ],
+                            "headline-md": [
+                                    "Noto Serif"
+                            ],
+                            "label-caps": [
+                                    "Manrope"
+                            ]
+                    },
+                    "fontSize": {
+                            "body-sm": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "1.5",
+                                            "letterSpacing": "0.01em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-sm": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "1.3",
+                                            "letterSpacing": "0",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "display-lg": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "1.5",
+                                            "letterSpacing": "0",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "letterSpacing": "0",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "label-caps": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "0.1em",
+                                            "fontWeight": "600"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-[#FAF9F6] dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-12 py-8 max-w-[1440px] mx-auto">
+<div class="flex gap-8">
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors duration-500 ease-in-out font-serif tracking-tight text-sm uppercase" href="#">Shop</a>
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors duration-500 ease-in-out font-serif tracking-tight text-sm uppercase" href="#">New Arrivals</a>
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors duration-500 ease-in-out font-serif tracking-tight text-sm uppercase" href="#">Collections</a>
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors duration-500 ease-in-out font-serif tracking-tight text-sm uppercase" href="#">About</a>
+</div>
+<a class="text-2xl font-serif tracking-[0.3em] uppercase text-stone-900 dark:text-white hover:opacity-70 transition-opacity duration-500 ease-in-out" href="/">
+                ELÉVÉ
+            </a>
+<div class="flex gap-6 text-stone-800 dark:text-stone-200">
+<button class="hover:opacity-70 transition-opacity duration-500 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">search</span>
+</button>
+<button class="hover:opacity-70 transition-opacity duration-500 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">shopping_bag</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-xxl">
+<!-- Header -->
+<div class="text-center mb-xl">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">Your Wishlist</h1>
+<p class="font-body-md text-body-md text-outline">Curated items saved for later.</p>
+</div>
+<!-- Wishlist Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-xl">
+<!-- Item 1 -->
+<article class="group flex flex-col gap-md">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-low rounded">
+<img class="object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="minimalist ceramic vase in warm beige with dried floral arrangement on a soft off-white pedestal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2DrMqe7lGdKhVJ0bIwAnKcNDmXe0gQXI5pMS_myLlo74O3zx5MRJhplZ2Z_LIm_d0w4WNvqaw8fozB2sYTt48wT8VhTHPEZF3hT5hweROb5HvcHUwuDIba6_ujWmNz-f82q70blA_T5_xdaTpyO8JqFSazUUvcmQdbZT5M3pUcqu8eOwo3bOYmj77nmHYfGDuwppXfZWH4BmyCwvt46oP62NzjftU9Uuu1doI8R1f8m3NmOk1imWfqsqScRda_n9whbEYp_E7Meg"/>
+<button aria-label="Remove from wishlist" class="absolute top-md right-md p-sm text-on-surface bg-surface/80 hover:bg-surface rounded-full backdrop-blur-sm transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 300;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-xs text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Sculptural Ceramic Vase</h2>
+<p class="font-body-sm text-body-sm text-outline mb-sm">$120</p>
+<button class="font-label-caps text-label-caps bg-on-surface text-surface py-md px-lg w-full rounded hover:bg-primary transition-colors uppercase tracking-widest border border-on-surface hover:border-primary">
+                        Add to Bag
+                    </button>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="group flex flex-col gap-md">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-low rounded">
+<img class="object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="close up of a textured knit sweater in soft peach tone draped elegantly over a wooden chair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUrFKFinPrAPnQzh26oC4KU7--oIQvSLg5HOzTe85EESKuyRXl1fFVQXJPfpPwCr4FQMkXzqkPF5U9oXrCIiOnWGjRUT6Bp0z267pmvLJZWVIOItS41R4IA5iINtVXdboC92dnJPoIJMO95RbxQqlx0yL4eLVy8GAoS5Q8VzFWTonutOsBchLRd491XXCbfxHOHA6EyxO4pOy_lI91nocoZxa8O_N4FSaMVuuVJ4GX6CkrMmGjhuYS2C1pyozaLwuvHkn7fK4G_Ps"/>
+<button aria-label="Remove from wishlist" class="absolute top-md right-md p-sm text-on-surface bg-surface/80 hover:bg-surface rounded-full backdrop-blur-sm transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 300;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-xs text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Merino Wool Knit</h2>
+<p class="font-body-sm text-body-sm text-outline mb-sm">$285</p>
+<button class="font-label-caps text-label-caps bg-on-surface text-surface py-md px-lg w-full rounded hover:bg-primary transition-colors uppercase tracking-widest border border-on-surface hover:border-primary">
+                        Add to Bag
+                    </button>
+</div>
+</article>
+<!-- Item 3 -->
+<article class="group flex flex-col gap-md">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-low rounded">
+<img class="object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="sleek leather crossbody bag in muted taupe resting on a textured linen surface with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3j8z9bJixXxPmZZqiC9GZwHVW9eAiW9iGqnahrJeNkmnc3oARLUcoO4I-YXp9e-MAuzu_4TTbSQUSTW6j3dSl0of9omIzeGj09VuPdksQfTUn6DZ1RhX6exC4hSCUxitefbpfGDhceIyGlYAzeRitRodgdQAJZ3btpI_p9tUNsFa4caOC_V72Qv4bZ_sDRflojDDPCFNIkfVPdrwmPQLxWJX4epLRQfoX-aSak0V-w9smeplpdtyVAW9I_6Xw87JmOcz_aDO0CAU"/>
+<button aria-label="Remove from wishlist" class="absolute top-md right-md p-sm text-on-surface bg-surface/80 hover:bg-surface rounded-full backdrop-blur-sm transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 300;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-xs text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Taupe Leather Crossbody</h2>
+<p class="font-body-sm text-body-sm text-outline mb-sm">$450</p>
+<button class="font-label-caps text-label-caps bg-on-surface text-surface py-md px-lg w-full rounded hover:bg-primary transition-colors uppercase tracking-widest border border-on-surface hover:border-primary">
+                        Add to Bag
+                    </button>
+</div>
+</article>
+<!-- Item 4 -->
+<article class="group flex flex-col gap-md">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-low rounded">
+<img class="object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="minimalist gold pendant necklace laying on smooth white marble with subtle shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbrKvqhSwq-jAmI8FVwzg-0JbrIaM8mSm28p1vy9a-WKJlJiYgret2yTTY2AnxDWFCqsXWogCbKS68FiKxhRbg3iC4S1vbxlpbxlEJzOU4wfu3O6QfqN3XoK_vnsLK-OYzYZJslKtRYKROuNtNGeKW6x4d2Peemi8uQJm7mHOF9UZwnfeB_m6x2TgvY6Im0cn1m6zbaEvh5-YQASi8w5mDqJrkmnnz7gYUfoEpT9x9wSEHMFvDnKXa9dxQkimR-IMK6pyz35fHs9g"/>
+<button aria-label="Remove from wishlist" class="absolute top-md right-md p-sm text-on-surface bg-surface/80 hover:bg-surface rounded-full backdrop-blur-sm transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 300;">favorite</span>
+</button>
+</div>
+<div class="flex flex-col gap-xs text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Gold Pendant Necklace</h2>
+<p class="font-body-sm text-body-sm text-outline mb-sm">$195</p>
+<button class="font-label-caps text-label-caps bg-surface text-on-surface py-md px-lg w-full rounded hover:bg-surface-container-high transition-colors uppercase tracking-widest border border-outline-variant hover:border-outline">
+                        Select Options
+                    </button>
+</div>
+</article>
+</div>
+<!-- Empty State (Hidden by default, shown for completeness) -->
+<div class="hidden flex-col items-center justify-center py-xxl gap-lg text-center">
+<span class="material-symbols-outlined text-outline" style="font-size: 48px; font-variation-settings: 'wght' 200;">favorite_border</span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Your wishlist is empty</h2>
+<p class="font-body-md text-body-md text-outline">Save items you love to revisit them later.</p>
+</div>
+<a class="font-label-caps text-label-caps bg-on-surface text-surface py-md px-xl rounded hover:bg-primary transition-colors uppercase tracking-widest mt-sm" href="#">
+                Continue Shopping
+             </a>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#F5F5F0] dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 w-full mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto text-stone-700 dark:text-stone-300">
+<div class="flex flex-col gap-6">
+<span class="text-lg font-serif tracking-[0.2em] text-stone-900 dark:text-white uppercase">ELÉVÉ</span>
+<p class="font-body-sm text-body-sm text-stone-500 dark:text-stone-400">© 2024 ELÉVÉ. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Sustainability</a>
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Shipping &amp; Returns</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Privacy Policy</a>
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-serif text-xs tracking-widest uppercase text-stone-900 dark:text-white underline underline-offset-4 mb-2">Newsletter Signup</span>
+<div class="flex w-full border-b border-stone-300 dark:border-stone-700 pb-2">
+<input class="bg-transparent border-none outline-none text-sm w-full focus:ring-0 px-0 font-body-sm" placeholder="Email Address" type="email"/>
+<button class="hover:text-stone-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

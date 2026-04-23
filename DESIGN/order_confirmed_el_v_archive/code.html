@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation - ELÉVÉ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffddb0",
+                        "primary-fixed-dim": "#debfc2",
+                        "primary": "#70585b",
+                        "outline-variant": "#d2c3c4",
+                        "on-surface-variant": "#4f4445",
+                        "on-background": "#1a1c1a",
+                        "surface": "#faf9f6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#ffdcae",
+                        "surface-tint": "#70585b",
+                        "secondary-fixed": "#ece0d9",
+                        "primary-fixed": "#fbdbde",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#735a36",
+                        "on-tertiary-fixed-variant": "#594320",
+                        "inverse-primary": "#debfc2",
+                        "secondary-container": "#ece0d9",
+                        "on-surface": "#1a1c1a",
+                        "on-secondary-container": "#6b635d",
+                        "on-primary-fixed-variant": "#574144",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-primary-container": "#765e61",
+                        "surface-container-high": "#e9e8e5",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#201a16",
+                        "on-primary-fixed": "#281719",
+                        "outline": "#807475",
+                        "on-secondary-fixed-variant": "#4d4540",
+                        "inverse-surface": "#2f312f",
+                        "inverse-on-surface": "#f2f1ee",
+                        "tertiary-fixed-dim": "#e2c195",
+                        "on-tertiary-container": "#79603a",
+                        "surface-variant": "#e3e2e0",
+                        "surface-dim": "#dbdad7",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#efeeeb",
+                        "primary-container": "#fadadd",
+                        "background": "#faf9f6",
+                        "surface-bright": "#faf9f6",
+                        "on-tertiary-fixed": "#281800",
+                        "secondary-fixed-dim": "#cfc4be",
+                        "secondary": "#655d58",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "xxl": "80px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Manrope"],
+                        "headline-sm": ["Noto Serif"],
+                        "display-lg": ["Noto Serif"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Noto Serif"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopNavBar: Hidden on transactional page -->
+<header class="w-full flex justify-center items-center py-8 px-12 border-b border-surface-variant">
+<a class="text-2xl font-serif tracking-[0.3em] uppercase text-on-surface" href="/">ELÉVÉ</a>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-lg py-xxl w-full max-w-container-max mx-auto">
+<!-- Success State Header -->
+<div class="text-center max-w-2xl mx-auto mb-xl">
+<span class="material-symbols-outlined text-4xl text-primary mb-md block" data-icon="check_circle">check_circle</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">Thank You for Your Order</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your order <span class="font-bold text-on-surface">#ELV-8492</span> has been placed successfully.</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">We've sent a confirmation email to your inbox.</p>
+</div>
+<!-- Order Details Grid -->
+<div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xxl">
+<!-- Delivery Info -->
+<div class="md:col-span-5 bg-surface-container-low p-xl border border-surface-variant rounded flex flex-col justify-between">
+<div>
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-md">Expected Delivery</h2>
+<p class="font-headline-sm text-headline-sm text-on-surface mb-lg">Thursday, Oct 24 -<br/>Monday, Oct 28</p>
+<div class="space-y-md mt-xl">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Shipping Address</h3>
+<p class="font-body-sm text-body-sm text-on-surface">Elena Rostova<br/>123 Calm Street, Apt 4B<br/>New York, NY 10012<br/>United States</p>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-xs">Shipping Method</h3>
+<p class="font-body-sm text-body-sm text-on-surface">Standard Courier (Carbon Neutral)</p>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-lg border-t border-surface-variant">
+<img alt="Subtle editorial imagery" class="w-full h-32 object-cover opacity-80 mix-blend-multiply" data-alt="Soft focused close-up of light beige linen fabric texture with natural sunlight creating gentle shadows, minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsHKoZk2VQDiuGxUHPp4DYUXgDeuXc_tUqC9kj_FdwTmrr1RL3NCL311wTWfeIwNLKQyN45FJobGyTaCDpY78LwGKcnKahcfe7ryoqE39jftLjkbw8D_63TrovkuIOOC8QYlSQHJKZJLaY1jrwrpaeX1_Ns4k3Vtxsvb1MuFziCf-HGf-jOHoB2faAGWg-yTE2iWQBr5VgSYw-1NK-sUiESXqOxnYjMjUPsiCiPvEC2sS23iJr9w5N7QekRUvmURzRsi2gU9cw8K8"/>
+</div>
+</div>
+<!-- Order Summary -->
+<div class="md:col-span-7 bg-surface p-xl border border-surface-variant rounded">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-lg pb-sm border-b border-surface-variant">Order Summary</h2>
+<div class="space-y-lg mb-xl">
+<!-- Item 1 -->
+<div class="flex items-start gap-md">
+<img alt="Product" class="w-20 h-24 object-cover bg-surface-container-low border border-surface-variant" data-alt="Minimalist beige ceramic vase on a plain white surface with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlo2lzcblR6_3LQdb8Ze_06PD-rV_-Tu870puE3OGMLiIitOOIXWg24JJjFRLLil___RzshYICHF7SKwHIWCNoxEo9h1Q8-dOYXcusGDNlYHhf0mofqQuhT37Z6s4n0n-SzT2y-6EYDDDZYBzaswJl_plJQq-aQuZjwozTa6cHyAg3nLG6I7nSTK4HRzv3jFAOg9KmIzMyprgVMxudUzAt7klFhjqpYOt9kaNd1wVdE_PsbKYUBoKWrdwuPVP7pZEknAFlJlZQT-w"/>
+<div class="flex-grow">
+<h3 class="font-body-md text-body-md text-on-surface mb-xs">The Ribbed Cashmere Sweater</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Size: M | Color: Oatmeal</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Qty: 1</p>
+</div>
+<div class="text-right font-body-md text-body-md text-on-surface">
+                            $320.00
+                        </div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-start gap-md">
+<img alt="Product" class="w-20 h-24 object-cover bg-surface-container-low border border-surface-variant" data-alt="A neatly folded stack of light grey woven wool blankets resting on a wooden stool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASxpORsj_vhIoOT16WyryecfOR9lDfcwXQ9he8_sOIImrnHLWPAHtEV4UzzVv01YTLWVSwF89UZDE6MGLNjyMhDJWBIJKKKDabJ02vStyxD3V5wUBD7EmSGAIF0PLsegfifE2j1GSmWdIrxWsPcTWupWCb6p6j2OVDIzjSmP62URW_cUrDdodBe7GxSpWQknSWnelHdjDP5KC6MimPAZOF8-S5aCSD-LkDbuNw3iVy15mTdyDJO_Z98MolnrAnLJEwM3g4LozMUG4"/>
+<div class="flex-grow">
+<h3 class="font-body-md text-body-md text-on-surface mb-xs">Pleated Wool Trousers</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Size: 32 | Color: Charcoal</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Qty: 1</p>
+</div>
+<div class="text-right font-body-md text-body-md text-on-surface">
+                            $240.00
+                        </div>
+</div>
+</div>
+<div class="border-t border-surface-variant pt-lg space-y-sm">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>$560.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Shipping</span>
+<span>Complimentary</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Taxes</span>
+<span>$44.80</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-on-surface pt-md border-t border-surface-variant mt-md">
+<span>Total</span>
+<span>$604.80</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action -->
+<div class="text-center">
+<a class="inline-flex items-center justify-center px-xl py-sm bg-on-surface text-surface font-label-caps text-label-caps uppercase hover:bg-on-surface-variant transition-colors duration-300" href="/">
+                Continue Shopping
+            </a>
+</div>
+</main>
+<!-- Footer: Hidden on transactional page to keep focus, but usually present. Leaving minimal version -->
+<footer class="w-full grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto border-t border-surface-variant mt-20 text-center md:text-left">
+<div class="md:col-span-1">
+<span class="text-lg font-serif tracking-[0.2em] text-on-surface">ELÉVÉ</span>
+</div>
+<div class="md:col-span-3 text-on-surface-variant font-body-sm text-body-sm">
+            © 2024 ELÉVÉ. All rights reserved.
+        </div>
+</footer>
+</body></html>

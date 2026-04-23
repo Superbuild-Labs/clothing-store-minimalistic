@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELÉVÉ - Collections</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#735a36",
+                      "surface": "#faf9f6",
+                      "tertiary-fixed": "#ffddb0",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#fbdbde",
+                      "on-surface": "#1a1c1a",
+                      "outline": "#807475",
+                      "inverse-primary": "#debfc2",
+                      "secondary-container": "#ece0d9",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#4d4540",
+                      "on-primary-fixed": "#281719",
+                      "primary-fixed-dim": "#debfc2",
+                      "surface-container-low": "#f4f3f1",
+                      "surface-variant": "#e3e2e0",
+                      "on-tertiary-fixed": "#281800",
+                      "secondary": "#655d58",
+                      "surface-container-highest": "#e3e2e0",
+                      "primary": "#70585b",
+                      "tertiary-fixed-dim": "#e2c195",
+                      "outline-variant": "#d2c3c4",
+                      "secondary-fixed-dim": "#cfc4be",
+                      "on-primary-container": "#765e61",
+                      "on-surface-variant": "#4f4445",
+                      "primary-container": "#fadadd",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#201a16",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#ffdcae",
+                      "on-tertiary-fixed-variant": "#594320",
+                      "surface-tint": "#70585b",
+                      "background": "#faf9f6",
+                      "surface-dim": "#dbdad7",
+                      "surface-bright": "#faf9f6",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f2f1ee",
+                      "on-secondary-container": "#6b635d",
+                      "on-tertiary-container": "#79603a",
+                      "surface-container": "#efeeeb",
+                      "inverse-surface": "#2f312f",
+                      "on-primary-fixed-variant": "#574144",
+                      "on-background": "#1a1c1a",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#ece0d9",
+                      "surface-container-high": "#e9e8e5",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "xl": "48px",
+                      "container-max": "1280px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "xxl": "80px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "label-caps": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Manrope"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "headline-sm": [
+                              "Noto Serif"
+                      ],
+                      "display-lg": [
+                              "Noto Serif"
+                      ],
+                      "headline-md": [
+                              "Noto Serif"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-[100px]">
+<!-- TopNavBar -->
+<nav class="bg-transparent fixed top-0 w-full z-50 transition-all intentional-fade bg-background/90 backdrop-blur-sm">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-container-max mx-auto">
+<!-- Navigation Links (Left) -->
+<div class="hidden md:flex space-x-lg items-center">
+<a class="font-serif tracking-widest uppercase text-sm text-neutral-900 dark:text-white border-b border-neutral-800 dark:border-neutral-100 pb-1 transition-opacity duration-300 hover:opacity-70" href="#">
+                    Collections
+                </a>
+<a class="font-serif tracking-widest uppercase text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-opacity duration-300 hover:opacity-70" href="#">
+                    Lookbook
+                </a>
+<a class="font-serif tracking-widest uppercase text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-opacity duration-300 hover:opacity-70" href="#">
+                    Artisans
+                </a>
+<a class="font-serif tracking-widest uppercase text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-opacity duration-300 hover:opacity-70" href="#">
+                    Store
+                </a>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-neutral-800 transition-opacity duration-300 hover:opacity-70">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<!-- Brand Logo (Center) -->
+<div class="text-2xl font-serif italic tracking-tighter text-neutral-900 dark:text-neutral-50 absolute left-1/2 transform -translate-x-1/2">
+                ELÉVÉ
+            </div>
+<!-- Trailing Icons (Right) -->
+<div class="flex space-x-md items-center text-neutral-800 dark:text-neutral-100">
+<button class="transition-opacity duration-300 hover:opacity-70">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="transition-opacity duration-300 hover:opacity-70 hidden md:block">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-xxl">
+<!-- Page Header -->
+<header class="text-center mb-xl">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">Autumn / Winter '24</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">A curation of tactile softness and architectural silhouettes, crafted for the modern minimalist.</p>
+</header>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-xl">
+<!-- Product Card 1 -->
+<article class="group cursor-pointer flex flex-col">
+<div class="relative overflow-hidden bg-surface-container-low aspect-[3/4] mb-md rounded">
+<img alt="Model wearing a soft beige oversized wool coat in a bright minimalist studio" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Model wearing a soft beige oversized wool coat in a bright minimalist studio with soft natural lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBK1YiCwaRzePAGg2H-qCHIIvIQHfsKD2mTlKbzS_RrnZNrZc25vNsfkHxLax21ORejT9BCCQKugJVul4X6UhClawvoDPMZmhvF4eWjZvIJTm61imJIgBKOc1OENHgaNJU1WkfeEx9-ayrXCpst4F79dSPtvWtID5Anu5HHeWPf_K-pAXWkevkgYetAJatlwSf06LfYZq8JkCNe3_ppMJ6o5662SPtoiy8bSc3w0cykUiNs_vXbkcDenm1pCbOZq2hjJifqB31T0Q"/>
+<!-- Quick View Overlay -->
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-surface text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container transition-colors shadow-sm">
+                            QUICK VIEW
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">The Structured Wool Coat</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">$895</p>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="group cursor-pointer flex flex-col">
+<div class="relative overflow-hidden bg-surface-container-low aspect-[3/4] mb-md rounded">
+<img alt="Close up of a cream colored ribbed knit sweater folded neatly" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Close up of a cream colored ribbed knit sweater folded neatly on a light wood surface with soft indirect lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8JViatezXx-3jYZNoAKjX1cpq8CzKjAy5vFnCX80_ApPBcGX_E_rSQn_Z7RpEjO8r_sB4A1kT9-C4yct5HDIpxc3hmVxH5kMC8MFM5S13JEAafBmlkjpi3y0radTZGhWWuW94ipSy4Z9a_6yOKPz0Hgq0fYjlkkTy8yfnVzIGJC4Cxwi_6JHjUDChclIxNE3-silKCECE1aXHFbgBu30IyrJv1qdtz9kIPMDy4Dd59CWS_mBtPsUgoK8VJRGJQOGLvFuUVwNyQZc"/>
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-surface text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container transition-colors shadow-sm">
+                            QUICK VIEW
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Cashmere Ribbed Knit</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">$450</p>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="group cursor-pointer flex flex-col">
+<div class="relative overflow-hidden bg-surface-container-low aspect-[3/4] mb-md rounded">
+<img alt="Model walking in a flowing silk slip dress in deep charcoal gray" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Model walking in a flowing silk slip dress in deep charcoal gray against a smooth white concrete wall with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_gQnQNnlefaNHAGFFTfqfs-0ntJ_9nPxZ7Y2OL9-mnRPReLQUP8eqAVZBXnVEwWeDg1kdlaw1VAaIBy272AQpvBOuZDpAo5Rt30cekLB2jHNvzDGBFXIXDNkKrdiOvGwaOj10OZvA3B9BJiVMe6rtso65i_Y8-9rpvPO_SbTrAbyW5xNihzrjUZus0T1SJbqXBlUsSQKu-mdEcyunlfsuMAXLNJvZ8DIHeSV_amrRSv9fspGRslIdnzUYBMnFlyaPgX8OixPnpZ8"/>
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-surface text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container transition-colors shadow-sm">
+                            QUICK VIEW
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Silk Bias Slip Dress</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">$320</p>
+</div>
+</article>
+<!-- Product Card 4 -->
+<article class="group cursor-pointer flex flex-col">
+<div class="relative overflow-hidden bg-surface-container-low aspect-[3/4] mb-md rounded">
+<img alt="Detailed shot of tailored wide-leg trousers in a warm taupe fabric" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Detailed shot of tailored wide-leg trousers in a warm taupe fabric on a mannequin with clean bright studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGTgyPHgfH93COClzIE4BWPs6cqvIVfH92pyYbTEEMUAZqf1-TwfgsW2yXlhWfAYgZm3ScgxFRjcv8twDYZT_qRn1AHKOQtweIgq93u0CvhFgEC5YIm21LroOVZrgTBo2D8veBPZKMUkhxZWTJI0GFoT-KvQj7H5uybJ5Nqe8T6nhl0wJvP9-vT9sWQ6DHeADGyfRYUu02PafMJ0exqegSrpK2m-Xa_oBkULZSNIeKpgAmTicHtFDgRphOiLWIJUrfqFTD3FdznFY"/>
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-surface text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container transition-colors shadow-sm">
+                            QUICK VIEW
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Tailored Wide-Leg Trouser</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">$380</p>
+</div>
+</article>
+<!-- Product Card 5 -->
+<article class="group cursor-pointer flex flex-col">
+<div class="relative overflow-hidden bg-surface-container-low aspect-[3/4] mb-md rounded">
+<img alt="Minimalist leather handbag in rich chocolate brown resting on a stone plinth" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Minimalist leather handbag in rich chocolate brown resting on a light grey stone plinth with directional artistic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKslAI0UgM-9mOuEX4bx99aBbUg3Qbf7l-oHse_oI5jhid9ENb7NLD69T0eJorBLNG5pP6AQxtHFWI2Xm6T0IkS7Dby12vAxFKeNwm4gg1mYB-cVtAXcQWK-c9-A6fIEpqjh0a-1BINr7okzNz_XO0nh5x9h8wh2wbBWGPYCZCugqHZRr_7vDHGZyeQrBBjAJ6sqptcQTuYwimIi3vnhmmRR4XejZWY40L_jYHzqIt11lW0Nw23ST-6frf_Gsmss9ZOEym6pUWnt8"/>
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-surface text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container transition-colors shadow-sm">
+                            QUICK VIEW
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">The Everyday Tote</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">$650</p>
+</div>
+</article>
+<!-- Product Card 6 -->
+<article class="group cursor-pointer flex flex-col">
+<div class="relative overflow-hidden bg-surface-container-low aspect-[3/4] mb-md rounded">
+<img alt="Crisp white poplin button-down shirt styled half-tucked" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Crisp white poplin button-down shirt styled half-tucked on a model against a soft beige backdrop in soft diffuse light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqkxmZKPUjd1V2-AN9Ei7y9hmK91N9CbYnaZCFJeJnbhF9tEOv7afeVGetHNEwIfMKVko1vU_vpXEM7MDGslHu1v6vfaDetaCUZsfrOuUpVyvOafAj4KK7T9YRksnu_1c-2s5-u6QbLZBC5dqKqS-6gQrytKqUSp0SusWIm9xlMcGxTyxiewXROnO6NVPXFvtu0q0yjJlv-ug_G6EpZCrAuYunW6_oaqehiEZ7tCHdGOFAf-kEDstggFcFAWaasChvoJcmxe_AL_M"/>
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-surface text-on-surface font-label-caps text-label-caps py-sm px-lg rounded hover:bg-surface-container transition-colors shadow-sm">
+                            QUICK VIEW
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center text-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Poplin Oversized Shirt</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">$245</p>
+</div>
+</article>
+</div>
+<!-- Load More Action -->
+<div class="mt-xxl flex justify-center">
+<button class="border border-outline text-on-surface font-label-caps text-label-caps py-md px-xl rounded hover:bg-surface-container-low transition-colors">
+                DISCOVER MORE
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-50 dark:bg-neutral-950 w-full border-t border-stone-200 dark:border-neutral-800 graceful-reveal mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 max-w-screen-2xl mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col space-y-md">
+<span class="text-lg font-serif text-neutral-900 dark:text-neutral-50">ELÉVÉ</span>
+<p class="font-serif text-xs tracking-wide text-neutral-700 dark:text-neutral-300 max-w-xs">
+                    Curating a lifestyle of quiet confidence and artisanal quality. Designed for the modern minimalist.
+                </p>
+</div>
+<!-- Links Column -->
+<div class="flex flex-col space-y-sm">
+<h4 class="font-label-caps text-label-caps text-neutral-900 dark:text-neutral-50 mb-xs">Customer Care</h4>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">
+                    Shipping &amp; Returns
+                </a>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">
+                    Sustainability
+                </a>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">
+                    Terms
+                </a>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">
+                    Privacy
+                </a>
+</div>
+<!-- Newsletter / Copyright -->
+<div class="flex flex-col space-y-md md:items-end text-left md:text-right">
+<h4 class="font-label-caps text-label-caps text-neutral-900 dark:text-neutral-50 mb-xs">Join the Archive</h4>
+<div class="flex border-b border-neutral-300 dark:border-neutral-700 pb-xs w-full md:w-auto">
+<input class="bg-transparent border-none focus:ring-0 p-0 font-serif text-xs tracking-wide text-neutral-700 dark:text-neutral-300 placeholder-neutral-400 w-full md:w-48" placeholder="Email Address" type="email"/>
+<button class="font-label-caps text-label-caps text-neutral-900 dark:text-neutral-50 ml-sm hover:opacity-70 transition-opacity">SUBSCRIBE</button>
+</div>
+<div class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 mt-auto pt-lg">
+                    © 2024 ELÉVÉ ARCHIVE. ALL RIGHTS RESERVED.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

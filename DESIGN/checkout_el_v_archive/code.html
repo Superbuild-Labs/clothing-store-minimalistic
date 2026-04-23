@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELÉVÉ - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffddb0",
+                      "primary-fixed-dim": "#debfc2",
+                      "primary": "#70585b",
+                      "outline-variant": "#d2c3c4",
+                      "on-surface-variant": "#4f4445",
+                      "on-background": "#1a1c1a",
+                      "surface": "#faf9f6",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#ffdcae",
+                      "surface-tint": "#70585b",
+                      "secondary-fixed": "#ece0d9",
+                      "primary-fixed": "#fbdbde",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#735a36",
+                      "on-tertiary-fixed-variant": "#594320",
+                      "inverse-primary": "#debfc2",
+                      "secondary-container": "#ece0d9",
+                      "on-surface": "#1a1c1a",
+                      "on-secondary-container": "#6b635d",
+                      "on-primary-fixed-variant": "#574144",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e3e2e0",
+                      "on-primary-container": "#765e61",
+                      "surface-container-high": "#e9e8e5",
+                      "surface-container-low": "#f4f3f1",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#201a16",
+                      "on-primary-fixed": "#281719",
+                      "outline": "#807475",
+                      "on-secondary-fixed-variant": "#4d4540",
+                      "inverse-surface": "#2f312f",
+                      "inverse-on-surface": "#f2f1ee",
+                      "tertiary-fixed-dim": "#e2c195",
+                      "on-tertiary-container": "#79603a",
+                      "surface-variant": "#e3e2e0",
+                      "surface-dim": "#dbdad7",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#efeeeb",
+                      "primary-container": "#fadadd",
+                      "background": "#faf9f6",
+                      "surface-bright": "#faf9f6",
+                      "on-tertiary-fixed": "#281800",
+                      "secondary-fixed-dim": "#cfc4be",
+                      "secondary": "#655d58",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "unit": "4px",
+                      "xxl": "80px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "xl": "48px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Manrope"
+                      ],
+                      "headline-sm": [
+                              "Noto Serif"
+                      ],
+                      "display-lg": [
+                              "Noto Serif"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Noto Serif"
+                      ],
+                      "label-caps": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom styles for minimal inputs */
+        .editorial-input {
+            border-bottom: 1px solid theme('colors.outline-variant');
+            background-color: transparent;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: theme('spacing.sm') 0;
+            transition: border-color 0.3s ease;
+        }
+        .editorial-input:focus {
+            outline: none;
+            border-bottom-color: theme('colors.on-surface');
+            box-shadow: none;
+        }
+        /* Hide scrollbar for a cleaner look in the summary if it scrolls */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant'); 
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- Minimal Header for Transactional Flow (Navigation Suppressed) -->
+<header class="w-full border-b border-outline-variant bg-surface py-6 sticky top-0 z-50">
+<div class="max-w-container-max mx-auto px-gutter text-center">
+<a class="inline-block" href="#">
+<span class="font-headline-md text-headline-md tracking-[0.3em] uppercase text-on-surface">ELÉVÉ</span>
+</a>
+</div>
+</header>
+<main class="flex-grow">
+<div class="max-w-container-max mx-auto px-4 md:px-gutter py-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl lg:gap-[80px]">
+<!-- Left Column: Checkout Forms -->
+<div class="lg:col-span-7 flex flex-col gap-xl">
+<!-- Progress / Breadcrumbs -->
+<nav class="flex items-center gap-sm text-body-sm font-body-sm text-on-surface-variant mb-4">
+<span class="opacity-60">Cart</span>
+<span class="material-symbols-outlined text-[16px] opacity-60" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">Information &amp; Shipping</span>
+<span class="material-symbols-outlined text-[16px] opacity-60" data-icon="chevron_right">chevron_right</span>
+<span class="opacity-60">Payment</span>
+</nav>
+<!-- Contact Information -->
+<section class="flex flex-col gap-lg">
+<div class="flex justify-between items-end mb-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Contact</h2>
+<a class="font-body-sm text-body-sm text-on-surface-variant underline underline-offset-4 hover:text-on-surface transition-colors" href="#">Log in</a>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Email Address</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" placeholder="you@example.com" type="email"/>
+</div>
+<label class="flex items-center gap-md cursor-pointer mt-2 group">
+<input class="w-4 h-4 border-outline-variant text-on-surface focus:ring-on-surface rounded-sm bg-transparent cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Email me with news and offers</span>
+</label>
+</section>
+<!-- Shipping Address -->
+<section class="flex flex-col gap-lg pt-8 border-t border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2">Shipping Address</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-lg">
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">First Name</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" type="text"/>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Last Name</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" type="text"/>
+</div>
+<div class="flex flex-col gap-sm md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Address</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" placeholder="Street address or P.O. Box" type="text"/>
+</div>
+<div class="flex flex-col gap-sm md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Apartment, suite, etc. (optional)</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" type="text"/>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">City</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">State</label>
+<select class="editorial-input font-body-md text-body-md text-on-surface w-full bg-transparent appearance-none rounded-none cursor-pointer">
+<option value="">Select</option>
+<option value="NY">New York</option>
+<option value="CA">California</option>
+</select>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">ZIP Code</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Shipping Method -->
+<section class="flex flex-col gap-lg pt-8 border-t border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2">Shipping Method</h2>
+<div class="flex flex-col gap-md">
+<!-- Option 1 -->
+<label class="flex items-center justify-between p-lg border border-outline-variant rounded-DEFAULT cursor-pointer hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<div class="flex items-center gap-md">
+<input checked="" class="w-4 h-4 text-on-surface border-outline-variant focus:ring-on-surface bg-transparent cursor-pointer" name="shipping" type="radio"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Standard Shipping</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3-5 Business Days</span>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface">Free</span>
+</label>
+<!-- Option 2 -->
+<label class="flex items-center justify-between p-lg border border-outline-variant rounded-DEFAULT cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<input class="w-4 h-4 text-on-surface border-outline-variant focus:ring-on-surface bg-transparent cursor-pointer" name="shipping" type="radio"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Express Shipping</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1-2 Business Days</span>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface">$15.00</span>
+</label>
+</div>
+</section>
+<!-- Payment Information -->
+<section class="flex flex-col gap-lg pt-8 border-t border-outline-variant">
+<div class="flex flex-col gap-sm mb-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Payment</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All transactions are secure and encrypted.</p>
+</div>
+<div class="border border-outline-variant rounded-DEFAULT bg-surface-container-lowest p-lg flex flex-col gap-lg">
+<div class="flex justify-between items-center border-b border-outline-variant pb-md mb-2">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Credit Card</span>
+<div class="flex gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Card Number</label>
+<div class="relative">
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full pl-10" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-50" data-icon="lock">lock</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Expiration Date (MM/YY)</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" placeholder="MM / YY" type="text"/>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Security Code</label>
+<div class="relative">
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full pr-10" placeholder="CVC" type="text"/>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-50 cursor-help" data-icon="help">help</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Name on Card</label>
+<input class="editorial-input font-body-md text-body-md text-on-surface w-full" type="text"/>
+</div>
+</div>
+</section>
+<!-- Submit Button -->
+<div class="pt-8 mt-4">
+<button class="w-full bg-on-surface text-on-primary py-5 font-label-caps text-label-caps uppercase tracking-[0.2em] hover:opacity-80 transition-opacity flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+                            Pay Now
+                        </button>
+</div>
+</div>
+<!-- Right Column: Order Summary (Sticky) -->
+<div class="lg:col-span-5 relative">
+<div class="sticky top-32 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-lg lg:p-xl flex flex-col gap-xl">
+<h2 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-md">Order Summary</h2>
+<!-- Items List -->
+<div class="flex flex-col gap-lg max-h-[409px] overflow-y-auto pr-2">
+<!-- Item 1 -->
+<div class="flex gap-md items-center">
+<div class="w-20 h-24 bg-surface-container-high rounded-sm overflow-hidden flex-shrink-0 relative border border-outline-variant">
+<img alt="Minimalist structured handbag in soft cream leather resting on a marble surface" class="w-full h-full object-cover" data-alt="Minimalist structured handbag in soft cream leather resting on a marble surface, natural studio lighting, high end fashion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOiA3js2TUddRklXuN92h2ftTDNHokKtcZ0je-sHuW7GnF04QBV0F6mlOASsYQqNt_boZnLReMuIDiurrM0AVj5Z5842meAiz86-FRVYhqXTTXGjo-oknitE0Ks3ULdDZa2blVL_7leQT_7tlaxepsCoJudQKLbWonMDLkfNGjbYBY4fhmoyZXh8atKMvtdCNUj2VOPFKioFrpyB-RqIy6cKA7JsiGRoGR4nE5SjPhJtsrLXW3ZxfkvfHLEJ70-7k2pJCejhFkSVM"/>
+<span class="absolute top-0 right-0 bg-on-surface text-on-primary w-5 h-5 flex items-center justify-center rounded-full text-[10px] transform translate-x-1/2 -translate-y-1/2 font-body-sm">1</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-body-md text-body-md text-on-surface font-semibold">The Core Satchel</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bone White / OS</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">$450.00</span>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-md items-center">
+<div class="w-20 h-24 bg-surface-container-high rounded-sm overflow-hidden flex-shrink-0 relative border border-outline-variant">
+<img alt="Soft beige cashmere blend oversized scarf draped elegantly" class="w-full h-full object-cover" data-alt="Soft beige cashmere blend oversized scarf draped elegantly, close up texture shot, warm minimal lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2nylrcY9XtekEr_upIlZaK5TY-kTbPugzCxd0ITFDLJjFGtDmKU7k-yDEeb9_i_PaG2cibrGMBg0prh30A4nULBk242OSIg15OzM3BYNfI4kfhlv1B2Zs-fx5aiLpWinC6aEzJc6GDwtXThsiKPvxXxTbQxhC4IPpSkxyPhc7M3NG-EHm_wCgUX51XSj8NIVqAb0x8QNQJzOye5_VrUPMthhKNJ_apINTD-S1DPmXsBcMamHZs2fUv4ZjhCAgUZjMx2wSwYzvQjk"/>
+<span class="absolute top-0 right-0 bg-on-surface text-on-primary w-5 h-5 flex items-center justify-center rounded-full text-[10px] transform translate-x-1/2 -translate-y-1/2 font-body-sm">2</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Cashmere Wrap</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oatmeal / OS</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">$240.00</span>
+</div>
+</div>
+<!-- Discount Code -->
+<div class="flex gap-sm border-y border-outline-variant py-lg">
+<input class="editorial-input font-body-md text-body-md text-on-surface flex-grow" placeholder="Gift card or discount code" type="text"/>
+<button class="px-6 py-2 border border-outline-variant text-on-surface font-label-caps text-label-caps uppercase tracking-widest hover:bg-surface-container-high transition-colors">Apply</button>
+</div>
+<!-- Totals -->
+<div class="flex flex-col gap-sm font-body-md text-body-md text-on-surface-variant">
+<div class="flex justify-between">
+<span>Subtotal</span>
+<span class="text-on-surface">$690.00</span>
+</div>
+<div class="flex justify-between">
+<span>Shipping</span>
+<span>Calculated at next step</span>
+</div>
+<div class="flex justify-between">
+<span>Estimated Taxes</span>
+<span>$55.20</span>
+</div>
+</div>
+<!-- Final Total -->
+<div class="flex justify-between items-end border-t border-outline-variant pt-lg mt-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Total</span>
+<div class="flex items-baseline gap-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant uppercase">USD</span>
+<span class="font-headline-md text-headline-md text-on-surface">$745.20</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="bg-[#F5F5F0] dark:bg-stone-900 w-full mt-20 border-t border-stone-200 dark:border-stone-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto">
+<div class="col-span-1 md:col-span-4 mb-8">
+<span class="text-lg font-serif tracking-[0.2em] text-stone-900 dark:text-white">ELÉVÉ</span>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Sustainability</a>
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Shipping &amp; Returns</a>
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Privacy Policy</a>
+<a class="font-serif text-xs tracking-widest uppercase text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors duration-300 ease-linear" href="#">Newsletter Signup</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-stone-200 dark:border-stone-800">
+<p class="font-serif text-xs tracking-widest uppercase text-stone-700 dark:text-stone-300">© 2024 ELÉVÉ. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

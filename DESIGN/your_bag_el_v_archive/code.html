@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cart - ELÉVÉ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffddb0",
+                        "primary-fixed-dim": "#debfc2",
+                        "primary": "#70585b",
+                        "outline-variant": "#d2c3c4",
+                        "on-surface-variant": "#4f4445",
+                        "on-background": "#1a1c1a",
+                        "surface": "#faf9f6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#ffdcae",
+                        "surface-tint": "#70585b",
+                        "secondary-fixed": "#ece0d9",
+                        "primary-fixed": "#fbdbde",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#735a36",
+                        "on-tertiary-fixed-variant": "#594320",
+                        "inverse-primary": "#debfc2",
+                        "secondary-container": "#ece0d9",
+                        "on-surface": "#1a1c1a",
+                        "on-secondary-container": "#6b635d",
+                        "on-primary-fixed-variant": "#574144",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-primary-container": "#765e61",
+                        "surface-container-high": "#e9e8e5",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#201a16",
+                        "on-primary-fixed": "#281719",
+                        "outline": "#807475",
+                        "on-secondary-fixed-variant": "#4d4540",
+                        "inverse-surface": "#2f312f",
+                        "inverse-on-surface": "#f2f1ee",
+                        "tertiary-fixed-dim": "#e2c195",
+                        "on-tertiary-container": "#79603a",
+                        "surface-variant": "#e3e2e0",
+                        "surface-dim": "#dbdad7",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#efeeeb",
+                        "primary-container": "#fadadd",
+                        "background": "#faf9f6",
+                        "surface-bright": "#faf9f6",
+                        "on-tertiary-fixed": "#281800",
+                        "secondary-fixed-dim": "#cfc4be",
+                        "secondary": "#655d58",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "xxl": "80px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Manrope"],
+                        "headline-sm": ["Noto Serif"],
+                        "display-lg": ["Noto Serif"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Noto Serif"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-[#FAF9F6] dark:bg-stone-950 font-serif tracking-tight text-sm uppercase docked full-width top-0 border-b border-stone-200 dark:border-stone-800 flat no shadows duration-500 ease-in-out">
+<div class="flex justify-between items-center w-full px-12 py-8 max-w-[1440px] mx-auto">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors hover:opacity-70 transition-opacity" href="#">Shop</a>
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors hover:opacity-70 transition-opacity" href="#">New Arrivals</a>
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors hover:opacity-70 transition-opacity" href="#">Collections</a>
+<a class="text-stone-400 dark:text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors hover:opacity-70 transition-opacity" href="#">About</a>
+</nav>
+<div class="flex-1 md:flex-none text-center">
+<a class="text-2xl font-serif tracking-[0.3em] uppercase text-stone-900 dark:text-white hover:opacity-70 transition-opacity" href="#">ELÉVÉ</a>
+</div>
+<div class="flex items-center gap-6 justify-end">
+<button class="text-stone-800 dark:text-stone-200 hover:opacity-70 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-stone-900 dark:text-white border-b border-stone-900 dark:border-white pb-1 hover:opacity-70 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-xxl">
+<div class="mb-xl">
+<h1 class="font-headline-md text-headline-md text-on-surface">Shopping Bag</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">2 items in your bag</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
+<!-- Cart Items -->
+<div class="lg:col-span-8 flex flex-col gap-12">
+<!-- Item 1 -->
+<div class="flex flex-col sm:flex-row gap-8 border-b border-outline-variant pb-8">
+<div class="w-full sm:w-48 aspect-[3/4] bg-surface-container-low shrink-0 relative">
+<img alt="A crisp white linen button-down shirt softly draped against a warm neutral background, natural studio lighting" class="absolute inset-0 w-full h-full object-cover" data-alt="A crisp white linen button-down shirt softly draped against a warm neutral background, natural studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjuBSzyhNtxrLoThAR97JcvPKgErijeAR2RhrPKG1TxfVbLjd7_Ot21EzIWnVt1-OsQiokVV-tqN5-Zd1kqPLn0IpzsAKusYjucNCcDTCUkgBNihRVp1AKRVp7Iy68slbsLUO2VuIcnQGC3eVDpo_tIeIbk6RbXvF_BS4Ie1a7IeHXiQ2__VEuyPOlpBoUN6cH9_AD0XLRGsOGKIjHW6uSaVC0RcKXYPUKMeeeoJ5KMkW3C6cZCcdE8eoDoxZSZ9Rw2k4vQgaSs9M"/>
+</div>
+<div class="flex flex-col flex-grow justify-between py-2">
+<div>
+<div class="flex justify-between items-start gap-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">The Linen Overshirt</h3>
+<p class="font-body-lg text-body-lg text-on-surface">$185.00</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Color: Ivory</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Size: M</p>
+</div>
+<div class="flex justify-between items-end mt-8">
+<div class="flex items-center border border-outline-variant rounded-DEFAULT w-max">
+<button aria-label="Decrease quantity" class="px-3 py-1 hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="font-body-sm text-body-sm px-4 py-1 border-x border-outline-variant">1</span>
+<button aria-label="Increase quantity" class="px-3 py-1 hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors uppercase border-b border-transparent hover:border-on-surface">
+                                Remove
+                            </button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col sm:flex-row gap-8 border-b border-outline-variant pb-8">
+<div class="w-full sm:w-48 aspect-[3/4] bg-surface-container-low shrink-0 relative">
+<img alt="Pleated wide-leg trousers in a soft charcoal tone, folded elegantly on a smooth stone surface" class="absolute inset-0 w-full h-full object-cover" data-alt="Pleated wide-leg trousers in a soft charcoal tone, folded elegantly on a smooth stone surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYca2MAgZxZ0fE9-zSzmyMBJAe8v_RumZscXAVJ-XGdlV_TH3faO3EL__7iPny3-ZrkrF46ITBFDfgpz5vRqRi7GXSicPJ3qs83lsvhS5jjclXMOcIbodjRibwkjgXF311vfurQiSOS8Ej4Hxxr4XDfWU9wnj4s9NARxzhIDkM-VftM2dF-mhUwBUXuyAUdMyd3sNV27DRhGjHAV-jJwObd80hGl4oXHBKfgHApVSOljhIliqByGKnrWQoHLiPKNuOgBxPmH5N09c"/>
+</div>
+<div class="flex flex-col flex-grow justify-between py-2">
+<div>
+<div class="flex justify-between items-start gap-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Pleated Wool Trouser</h3>
+<p class="font-body-lg text-body-lg text-on-surface">$240.00</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Color: Charcoal</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Size: 32</p>
+</div>
+<div class="flex justify-between items-end mt-8">
+<div class="flex items-center border border-outline-variant rounded-DEFAULT w-max">
+<button aria-label="Decrease quantity" class="px-3 py-1 hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="font-body-sm text-body-sm px-4 py-1 border-x border-outline-variant">1</span>
+<button aria-label="Increase quantity" class="px-3 py-1 hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors uppercase border-b border-transparent hover:border-on-surface">
+                                Remove
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container p-8 rounded-lg sticky top-32">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-8">Order Summary</h2>
+<div class="flex flex-col gap-4 border-b border-outline-variant pb-6 mb-6">
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$425.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Shipping</span>
+<span>Calculated at checkout</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-8">
+<span class="font-body-lg text-body-lg text-on-surface">Total</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">$425.00</span>
+</div>
+<button class="w-full bg-[#1a1c1a] text-white font-label-caps text-label-caps py-4 rounded-DEFAULT uppercase hover:bg-opacity-90 transition-opacity">
+                        Proceed to Checkout
+                    </button>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center mt-6">
+                        Complimentary shipping and returns on all domestic orders.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#F5F5F0] dark:bg-stone-900 font-serif text-xs tracking-widest uppercase w-full mt-20 border-t border-stone-200 dark:border-stone-800 flat no shadows duration-300 ease-linear">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-lg font-serif tracking-[0.2em] text-stone-900 dark:text-white">ELÉVÉ</span>
+<p class="mt-4 text-stone-700 dark:text-stone-300 normal-case tracking-normal font-body-sm text-body-sm">© 2024 ELÉVÉ. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-col md:flex-row gap-8 md:gap-12 md:justify-end">
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" href="#">Sustainability</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" href="#">Shipping &amp; Returns</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" href="#">Newsletter Signup</a>
+</div>
+</div>
+</footer>
+</body></html>

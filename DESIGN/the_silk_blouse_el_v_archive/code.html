@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELÉVÉ - The Alpaca Coat</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#735a36",
+                        "surface": "#faf9f6",
+                        "tertiary-fixed": "#ffddb0",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#fbdbde",
+                        "on-surface": "#1a1c1a",
+                        "outline": "#807475",
+                        "inverse-primary": "#debfc2",
+                        "secondary-container": "#ece0d9",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#4d4540",
+                        "on-primary-fixed": "#281719",
+                        "primary-fixed-dim": "#debfc2",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-variant": "#e3e2e0",
+                        "on-tertiary-fixed": "#281800",
+                        "secondary": "#655d58",
+                        "surface-container-highest": "#e3e2e0",
+                        "primary": "#70585b",
+                        "tertiary-fixed-dim": "#e2c195",
+                        "outline-variant": "#d2c3c4",
+                        "secondary-fixed-dim": "#cfc4be",
+                        "on-primary-container": "#765e61",
+                        "on-surface-variant": "#4f4445",
+                        "primary-container": "#fadadd",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#201a16",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#ffdcae",
+                        "on-tertiary-fixed-variant": "#594320",
+                        "surface-tint": "#70585b",
+                        "background": "#faf9f6",
+                        "surface-dim": "#dbdad7",
+                        "surface-bright": "#faf9f6",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f1ee",
+                        "on-secondary-container": "#6b635d",
+                        "on-tertiary-container": "#79603a",
+                        "surface-container": "#efeeeb",
+                        "inverse-surface": "#2f312f",
+                        "on-primary-fixed-variant": "#574144",
+                        "on-background": "#1a1c1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ece0d9",
+                        "surface-container-high": "#e9e8e5",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "xl": "48px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "xxl": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-sm": ["Noto Serif"],
+                        "display-lg": ["Noto Serif"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<nav class="bg-transparent fixed top-0 w-full z-50 transition-all intentional-fade">
+<div class="flex justify-between items-center px-12 py-6 w-full">
+<div class="hidden md:flex items-center gap-8">
+<a class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-opacity duration-300 hover:opacity-70 font-serif tracking-widest uppercase text-sm" href="#">Collections</a>
+<a class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-opacity duration-300 hover:opacity-70 font-serif tracking-widest uppercase text-sm" href="#">Lookbook</a>
+<a class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-opacity duration-300 hover:opacity-70 font-serif tracking-widest uppercase text-sm" href="#">Artisans</a>
+<a class="text-neutral-900 dark:text-white border-b border-neutral-800 dark:border-neutral-100 pb-1 font-serif tracking-widest uppercase text-sm" href="#">Store</a>
+</div>
+<a class="text-2xl font-serif italic tracking-tighter text-neutral-900 dark:text-neutral-50 absolute left-1/2 -translate-x-1/2" href="#">ELÉVÉ</a>
+<div class="flex items-center gap-6 ml-auto">
+<button class="text-neutral-800 dark:text-neutral-100 transition-opacity duration-300 hover:opacity-70">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="text-neutral-800 dark:text-neutral-100 transition-opacity duration-300 hover:opacity-70">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-[120px] pb-xxl px-md md:px-lg max-w-container-max mx-auto min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl md:gap-gutter">
+<div class="lg:col-span-7 flex flex-col gap-sm">
+<div class="w-full bg-surface-container-low relative group">
+<img alt="Model wearing a minimalist beige oversized wool coat in a well-lit white studio setup, high fashion editorial photography" class="w-full h-auto object-cover aspect-[3/4]" data-alt="Model wearing a minimalist beige oversized wool coat in a well-lit white studio setup, high fashion editorial photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfMUqhkrTp9s4OopD1iEEShFXwtw3N06NZUVh0qQkZgMKqM9FDHMonKaHNcdWAlXT2auCjpAhbJqucvfQoqNb_eoPc-Fbw2sxZFbmZDv8YOzCWuf1F-qCrtX76Y8jvvydtpp6hKc9eQvmJMesTSRoSmFOwl6HjuiYvFmwoPe-pSE4-XM3gRnVuXOL4P8XiqPT_dPQe0xR_vLwwYu4Zv21RrTRYYgEym3CVE3ZPes7QmSOz733Eh68Jsa2WsxjbHsCFuV1FlcKDtKs"/>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<img alt="Close-up detail of textured beige wool fabric with soft natural lighting, macro photography" class="w-full h-auto object-cover aspect-[3/4]" data-alt="Close-up detail of textured beige wool fabric with soft natural lighting, macro photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvh8yens50JeWtXxObi4oB1RsSWy4a6sBhZtRJrIERPM0y7_SfIjT68UnzqQQfvJunMKFwNR_2dk9MjKHsfaMZ0ZOAmQXe9GBKIAk8aIDuLpGQ2rc3Kgh4z4_aqMC9xY9MSsTKEl28_Gue3vops4-5hasOrfpnIrDhpKjOPikFS6GxqfCJFk6MuLwkakR5dYkgCMHF8p5zP3jYx_vYKm1zCWtDutalakIQMRLNa4XM1NR2uwa9TqYO7BNTHAPtRmnKlqGc3dx2yNE"/>
+<img alt="Model back view wearing beige oversized coat against soft neutral background, fashion editorial" class="w-full h-auto object-cover aspect-[3/4]" data-alt="Model back view wearing beige oversized coat against soft neutral background, fashion editorial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHxxPMw5PpqsXUWEA9QfWRPx0WduwLqLexHasbMGVwGpPV20rKDlkKZCZ-a8zsupW_RydmeYzANfL7AeBebd7-c2e9qSV-xutCGt1lD-Wh8lvo4G9c9PtwpUhBkL1_wXYry83LWAi1yu5WpDZ95Z6NZHY7yf3ZtR0HuLkUV3QBbolZXRBUe5n2XBIr9FrzA9jqSKzMySSKy-KO-ZPAnGMNDDL3qnohuaMm8BP4Fy0GT7CW8EWLSIWhPkfm9ojwI1wOjyIjOJckc_I"/>
+</div>
+</div>
+<div class="lg:col-span-4 lg:col-start-9 flex flex-col pt-lg lg:pt-0">
+<div class="sticky top-[140px] flex flex-col gap-lg">
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Outerwear</span>
+<h1 class="font-display-lg text-display-lg text-on-surface">The Alpaca Coat</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-sm">$1,250</p>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant">
+                        Spun from the finest Peruvian alpaca, this coat embodies the essence of slow luxury. An unstructured silhouette allows for effortless layering, while the deep, warm tones evoke a sense of quiet earthiness.
+                    </div>
+<div class="flex flex-col gap-md mt-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">SIZE</span>
+<button class="font-label-caps text-label-caps text-outline hover:text-on-surface underline underline-offset-4 decoration-1">Size Guide</button>
+</div>
+<div class="flex flex-wrap gap-sm">
+<button class="w-[48px] h-[48px] flex items-center justify-center rounded-full border border-outline-variant font-body-sm text-body-sm text-on-surface hover:border-on-surface transition-colors">XS</button>
+<button class="w-[48px] h-[48px] flex items-center justify-center rounded-full border border-on-surface bg-on-surface font-body-sm text-body-sm text-surface transition-colors">S</button>
+<button class="w-[48px] h-[48px] flex items-center justify-center rounded-full border border-outline-variant font-body-sm text-body-sm text-on-surface hover:border-on-surface transition-colors">M</button>
+<button class="w-[48px] h-[48px] flex items-center justify-center rounded-full border border-outline-variant font-body-sm text-body-sm text-outline-variant cursor-not-allowed line-through">L</button>
+</div>
+</div>
+<div class="mt-lg">
+<button class="w-full bg-on-surface text-surface py-[18px] font-label-caps text-label-caps hover:bg-secondary transition-colors uppercase tracking-widest">
+                            Add to Cart
+                        </button>
+</div>
+<div class="flex flex-col mt-xl border-t border-outline-variant">
+<div class="py-md border-b border-outline-variant flex justify-between items-center cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface">Details &amp; Care</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors" data-icon="add">add</span>
+</div>
+<div class="py-md border-b border-outline-variant flex justify-between items-center cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface">Shipping &amp; Returns</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors" data-icon="add">add</span>
+</div>
+<div class="py-md border-b border-outline-variant flex justify-between items-center cursor-pointer group">
+<span class="font-label-caps text-label-caps text-on-surface">Sustainability</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors" data-icon="add">add</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full border-t border-stone-200 dark:border-neutral-800 bg-stone-50 dark:bg-neutral-950 graceful-reveal">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-6">
+<span class="text-lg font-serif text-neutral-900 dark:text-neutral-50 italic tracking-tighter">ELÉVÉ</span>
+<p class="font-serif text-xs tracking-wide text-neutral-700 dark:text-neutral-300 max-w-xs">
+                    Curating quiet confidence through editorial minimalism and artisanal quality.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">Shipping &amp; Returns</a>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">Sustainability</a>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">Terms</a>
+<a class="font-serif text-xs tracking-wide text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">Privacy</a>
+</div>
+<div class="flex flex-col gap-6 md:items-end justify-between">
+<div class="flex gap-4">
+<a class="text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</a>
+</div>
+<span class="font-serif text-xs tracking-wide text-neutral-700 dark:text-neutral-300 uppercase">
+                    © 2024 ELÉVÉ ARCHIVE. ALL RIGHTS RESERVED.
+                </span>
+</div>
+</div>
+</footer>
+</body></html>
