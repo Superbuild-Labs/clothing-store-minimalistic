@@ -7,9 +7,9 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-charcoal text-surface border border-charcoal hover:bg-accent hover:border-accent",
+    "bg-charcoal text-surface border border-charcoal shadow-[0_6px_18px_rgba(24,24,24,0.16)] hover:-translate-y-0.5 hover:bg-accent hover:border-accent hover:shadow-[0_10px_24px_rgba(24,24,24,0.2)]",
   secondary:
-    "bg-transparent text-foreground border border-outline hover:border-charcoal hover:bg-surface-alt",
+    "bg-transparent text-foreground/92 border border-outline hover:border-charcoal/80 hover:bg-surface-alt",
   ghost: "bg-transparent text-foreground border border-transparent hover:bg-surface-alt",
   subtle:
     "bg-surface-alt text-foreground border border-outline hover:bg-surface-soft hover:border-charcoal",
@@ -32,7 +32,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-body uppercase tracking-luxury transition-all duration-300 ease-editorial disabled:pointer-events-none disabled:opacity-45",
+          "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-body font-medium uppercase tracking-[0.2em] transition-all duration-300 ease-editorial disabled:pointer-events-none disabled:opacity-45",
           variantClasses[variant],
           sizeClasses[size],
           className,

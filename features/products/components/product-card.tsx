@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
+import { FallbackImage } from "@/components/ui/fallback-image";
 import { formatCurrency } from "@/lib/currency";
+import { getSafeProductImages } from "@/lib/product-image";
 import { Product } from "@/features/products/types";
 import { useShopStore } from "@/store/use-store";
 
@@ -17,6 +18,9 @@ interface ProductCardProps {
 export function ProductCard({ product, priority = false }: ProductCardProps) {
   const addToCart = useShopStore((state) => state.addToCart);
   const setSelectedProduct = useShopStore((state) => state.setSelectedProduct);
+  const images = getSafeProductImages(product.images);
+  const primaryImage = images[0];
+  const secondaryImage = images[1];
 
   return (
     <article className="group flex flex-col">
@@ -31,14 +35,23 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="h-full w-full"
           >
-            <Image
-              src={product.images[0]}
+            <FallbackImage
+              src={primaryImage}
               alt={product.name}
               fill
               priority={priority}
               sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-              className="object-cover"
+              className="object-cover transition-opacity duration-500"
             />
+            {secondaryImage ? (
+              <FallbackImage
+                src={secondaryImage}
+                alt={`${product.name} alternate`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+            ) : null}
           </motion.div>
 
           <div className="pointer-events-none absolute inset-0 bg-charcoal/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -53,10 +66,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
       <div className="mt-4 space-y-3">
         <div className="space-y-1 text-center">
-          <p className="font-heading text-3xl leading-none tracking-[-0.01em] text-foreground">
+          <p className="font-heading text-[2rem] leading-none tracking-[-0.01em] text-foreground">
             {product.name}
           </p>
-          <p className="font-body text-sm text-charcoal/72">{formatCurrency(product.price)}</p>
+          <p className="font-body text-[11px] uppercase tracking-[0.16em] text-charcoal/72">
+            {formatCurrency(product.price)}
+          </p>
         </div>
 
         <Button

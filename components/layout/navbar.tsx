@@ -1,35 +1,47 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import { useScrollState } from "@/hooks/use-scroll-state";
+import { productCategories } from "@/features/products/data/products";
 import { useCartCount, useShopStore } from "@/store/use-store";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/shop?category=Outerwear", label: "New Arrivals" },
   { href: "/shop", label: "Collections" },
-  { href: "/shop?category=Accessories", label: "About" },
+  { href: "/about", label: "About" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isScrolled = useScrollState(18);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const cartCount = useCartCount();
   const openCart = useShopStore((state) => state.openCart);
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsSearchOpen(false);
   }, [pathname]);
 
   const transparentState = pathname === "/" && !isScrolled;
+
+  const submitSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const q = searchQuery.trim();
+    router.push(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+  };
+  const quickCategories = productCategories.filter((category) => category !== "All").slice(0, 6);
 
   return (
     <header
@@ -37,22 +49,23 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-editorial",
         transparentState
           ? "border-transparent bg-transparent"
-          : "border-outline bg-background/96 backdrop-blur",
+          : "border-outline/85 bg-background/95 backdrop-blur-md",
       )}
     >
       <Container className="relative flex h-20 items-center justify-between">
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-8 lg:gap-10 md:flex">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const linkPath = link.href.split("?")[0];
+            const isActive = pathname === linkPath;
             return (
               <Link
                 key={link.href + link.label}
                 href={link.href}
                 className={cn(
-                  "font-body text-xs uppercase tracking-luxury transition-colors",
+                  "relative py-1 font-body text-[11px] uppercase tracking-[0.2em] transition-colors",
                   isActive
-                    ? "text-foreground"
-                    : "text-charcoal/62 hover:text-foreground",
+                    ? "text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-foreground/55"
+                    : "text-charcoal/65 hover:text-foreground",
                 )}
               >
                 {link.label}
@@ -63,7 +76,7 @@ export function Navbar() {
 
         <button
           onClick={() => setIsMenuOpen((value) => !value)}
-          className="md:hidden"
+          className="rounded-sm p-2 text-foreground/90 transition-colors hover:text-foreground md:hidden"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -71,16 +84,29 @@ export function Navbar() {
 
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 font-heading text-3xl tracking-[0.24em] text-foreground"
+          className="absolute left-1/2 -translate-x-1/2 font-heading text-3xl tracking-[0.26em] text-foreground"
         >
           ELEVE
         </Link>
 
-        <div className="flex items-center gap-4">
-          <button aria-label="Search" className="hidden text-foreground/80 hover:text-foreground md:block">
+        <div className="flex items-center gap-4 sm:gap-5">
+          <button
+            aria-label="Search"
+            onClick={() => {
+              if (isSearchOpen) {
+                router.push(searchQuery.trim() ? `/search?q=${encodeURIComponent(searchQuery.trim())}` : "/search");
+                return;
+              }
+              setIsSearchOpen(true);
+            }}
+            className="text-foreground/75 transition-colors hover:text-foreground"
+          >
             <Search size={18} />
           </button>
-          <button aria-label="Account" className="hidden text-foreground/80 hover:text-foreground md:block">
+          <button
+            aria-label="Account"
+            className="hidden text-foreground/75 transition-colors hover:text-foreground md:block"
+          >
             <User size={18} />
           </button>
           <button
@@ -99,19 +125,74 @@ export function Navbar() {
       </Container>
 
       <AnimatePresence>
+        {isSearchOpen ? (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="border-t border-outline bg-background/98 backdrop-blur-md"
+          >
+            <Container className="py-4 sm:py-5">
+              <div className="rounded-sm border border-outline/90 bg-surface p-4 shadow-[0_16px_34px_rgba(23,24,23,0.14)] sm:p-5">
+                <form onSubmit={submitSearch} className="flex items-center gap-3">
+                <input
+                  autoFocus
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  type="search"
+                  placeholder="Search by product, category, color, or material"
+                  className="w-full border-b border-outline bg-transparent pb-2.5 font-body text-base text-foreground outline-none placeholder:text-charcoal/52"
+                />
+                <button
+                  type="submit"
+                  className="rounded-sm border border-outline px-3 py-2 font-body text-[11px] uppercase tracking-[0.2em] text-charcoal/88 transition-colors hover:border-charcoal hover:text-foreground"
+                >
+                  View
+                </button>
+              </form>
+
+                <div className="mt-4 md:hidden">
+                  <p className="mb-2 font-body text-[10px] uppercase tracking-[0.2em] text-charcoal/70">
+                    Quick Categories
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {quickCategories.map((category) => (
+                      <Link
+                        key={`search-quick-${category}`}
+                        href={`/shop?category=${encodeURIComponent(category)}`}
+                        className="rounded-full border border-outline bg-surface-alt px-3 py-1.5 font-body text-[10px] uppercase tracking-[0.14em] text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
+                      >
+                        {category}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {isMenuOpen ? (
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="border-t border-outline bg-surface-alt md:hidden"
+            className="border-t border-outline bg-surface-alt/95 backdrop-blur-sm md:hidden"
           >
-            <Container className="space-y-4 py-5">
+            <Container className="space-y-2 py-5">
+              <Link
+                href="/search"
+                className="block rounded-sm px-2 py-3 font-body text-xs uppercase tracking-[0.2em] text-charcoal/85 transition-colors hover:bg-surface hover:text-foreground"
+              >
+                Search
+              </Link>
               {navLinks.map((link) => (
                 <Link
                   key={link.href + "-mobile"}
                   href={link.href}
-                  className="block font-body text-xs uppercase tracking-luxury text-charcoal/80"
+                  className="block rounded-sm px-2 py-3 font-body text-xs uppercase tracking-[0.2em] text-charcoal/85 transition-colors hover:bg-surface hover:text-foreground"
                 >
                   {link.label}
                 </Link>

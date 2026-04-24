@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 
 import { HeroSection } from "@/components/hero-section";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { FallbackImage } from "@/components/ui/fallback-image";
 import { Heading } from "@/components/ui/heading";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Section } from "@/components/ui/section";
@@ -36,20 +36,20 @@ export default function HomePage() {
     <PageTransition>
       <HeroSection />
 
-      <Section>
+      <Section className="py-20 md:py-28">
         <Container>
           <Heading
             eyebrow="Featured"
             title="Curated Essentials"
             description="A hand-selected edit of signature pieces from the current collection."
             align="center"
-            className="mb-12"
+            className="mb-14"
           />
           <ProductGrid products={featuredProducts.slice(0, 4)} />
         </Container>
       </Section>
 
-      <Section tone="muted" className="overflow-hidden">
+      <Section tone="muted" className="overflow-hidden py-20 md:py-28">
         <Container>
           <Heading
             eyebrow="Categories"
@@ -58,7 +58,7 @@ export default function HomePage() {
             className="mb-10"
           />
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-7 md:grid-cols-3">
             {categoryHighlights.map((category, index) => (
               <Link
                 href={category.href}
@@ -68,22 +68,24 @@ export default function HomePage() {
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   {category.image ? (
-                    <Image
+                    <FallbackImage
                       src={category.image}
                       alt={category.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-editorial group-hover:scale-105"
+                      className="object-cover transition-transform duration-900 ease-editorial group-hover:scale-[1.08]"
                     />
                   ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/66 via-foreground/8 to-transparent transition-opacity duration-500 group-hover:from-foreground/54 group-hover:via-foreground/14" />
                 </div>
 
-                <div className="absolute bottom-0 p-5">
-                  <p className="font-heading text-3xl tracking-[-0.01em] text-foreground">
+                <div className="absolute bottom-0 p-6">
+                  <p className="font-heading text-3xl tracking-[-0.01em] text-surface transition-transform duration-500 group-hover:-translate-y-0.5">
                     {category.title}
                   </p>
-                  <p className="mt-2 font-body text-sm text-charcoal/74">{category.subtitle}</p>
+                  <p className="mt-2 max-w-[22ch] font-body text-sm text-surface/80 transition-colors duration-500 group-hover:text-surface/92">
+                    {category.subtitle}
+                  </p>
                 </div>
               </Link>
             ))}
@@ -91,7 +93,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="py-20 md:py-28">
         <Container className="grid gap-8 rounded-sm border border-outline bg-surface-alt p-8 md:grid-cols-[1.3fr_1fr] md:p-12">
           <div>
             <p className="font-body text-xs uppercase tracking-luxury text-accent">Lookbook Note</p>
@@ -106,10 +108,12 @@ export default function HomePage() {
 
           <div className="flex flex-col justify-end gap-4">
             <Link href="/shop" className="w-full">
-              <Button className="w-full">Browse Full Shop</Button>
+              <Button size="lg" className="w-full">
+                Browse Full Shop
+              </Button>
             </Link>
             <Link href="/product/alpaca-coat" className="w-full">
-              <Button variant="secondary" className="w-full">
+              <Button variant="secondary" className="w-full opacity-90 hover:opacity-100">
                 View Signature Piece
               </Button>
             </Link>

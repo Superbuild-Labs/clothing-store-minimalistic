@@ -1,11 +1,12 @@
 :root {
-  --background: #faf9f6;
-  --foreground: #1a1c1a;
+  --background: #f7f4ef;
+  --foreground: #171817;
   --surface: #ffffff;
-  --surface-alt: #f4f3f1;
-  --surface-soft: #efeeeb;
-  --outline: #d2c3c4;
-  --accent: #70585b;
-  --gold: #c8a97e;
-  --charcoal: #2f2f2f;
+  --surface-alt: #f0ece7;
+  --surface-soft: #e9e3dc;
+  --outline: #cdbfb2;
+  --accent: #5b4749;
+  --gold: #b8986a;
+  --charcoal: #272726;
+  --editorial-highlight: #e8dfd3;
 }

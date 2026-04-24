@@ -3,6 +3,7 @@
 import { create } from "zustand";
 
 import { Product } from "@/features/products/types";
+import { getProductImage } from "@/lib/product-image";
 
 export interface CartItem {
   key: string;
@@ -75,7 +76,7 @@ export const useShopStore = create<ShopStore>((set) => ({
             productId: product.id,
             name: product.name,
             price: product.price,
-            image: product.images[0] ?? "",
+            image: getProductImage(product.images),
             size,
             color,
             quantity,

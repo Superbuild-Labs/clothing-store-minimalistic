@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { Minus, Plus, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { FallbackImage } from "@/components/ui/fallback-image";
 import { formatCurrency } from "@/lib/currency";
 import { CartItem } from "@/store/use-store";
 
@@ -21,7 +21,7 @@ export function CartLineItem({
   return (
     <article className="flex gap-4 border-b border-outline pb-5">
       <div className="relative h-24 w-20 overflow-hidden rounded-sm bg-surface-soft">
-        <Image
+        <FallbackImage
           src={item.image}
           alt={item.name}
           fill

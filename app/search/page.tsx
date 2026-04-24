@@ -4,27 +4,30 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Section } from "@/components/ui/section";
-import { products } from "@/features/products/data/products";
 import { ShopCatalog } from "@/features/products/components/shop-catalog";
+import { products } from "@/features/products/data/products";
 
-function ShopCatalogFallback() {
+function SearchCatalogFallback() {
   return <div className="h-[520px] animate-pulse rounded-sm border border-outline bg-surface-alt" />;
 }
 
-export default function ShopPage() {
+export default function SearchPage() {
   return (
     <PageTransition>
       <Section>
         <Container>
           <Heading
-            eyebrow="Store"
-            title="Ready-to-Wear Collection"
-            description="Filter by category, material, size, and color, then sort to discover tactile essentials."
+            eyebrow="Search"
+            title="Search the Collection"
+            description="Find products by name, category, color, or material with live query-synced filtering."
             className="mb-10"
           />
-
-          <Suspense fallback={<ShopCatalogFallback />}>
-            <ShopCatalog products={products} />
+          <Suspense fallback={<SearchCatalogFallback />}>
+            <ShopCatalog
+              products={products}
+              emptyTitle="No search results yet"
+              emptyDescription="Try a different term or broaden your selected filters to see more pieces."
+            />
           </Suspense>
         </Container>
       </Section>

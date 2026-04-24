@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 const footerLinks = [
-  "Sustainability",
-  "Shipping & Returns",
-  "Privacy Policy",
-  "Terms of Service",
+  { label: "About", href: "/about" },
+  { label: "Search", href: "/search" },
+  { label: "Shipping & Returns (Coming Soon)", href: "/about#shipping-returns" },
+  { label: "Privacy Policy (Coming Soon)", href: "/about#privacy" },
 ];
 
 export function Footer() {
@@ -22,13 +22,13 @@ export function Footer() {
         </div>
 
         <div className="space-y-3">
-          {footerLinks.map((label) => (
+          {footerLinks.map((link) => (
             <Link
-              key={label}
-              href="#"
+              key={link.label}
+              href={link.href}
               className="block font-body text-xs uppercase tracking-luxury text-charcoal/76 transition-colors hover:text-foreground"
             >
-              {label}
+              {link.label}
             </Link>
           ))}
         </div>

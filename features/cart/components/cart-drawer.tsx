@@ -126,7 +126,7 @@ export function CartDrawer() {
                 <p className="font-heading text-3xl text-foreground">{formatCurrency(total)}</p>
               </div>
 
-              <Button className="w-full">Proceed to Checkout</Button>
+              <Button className="w-full">Checkout Coming Soon - Review Bag</Button>
             </footer>
           </motion.aside>
         </>
