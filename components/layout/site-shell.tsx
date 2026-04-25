@@ -9,7 +9,7 @@ export function SiteShell({ children }: PropsWithChildren) {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen pt-20 md:pt-24">{children}</div>
+      <main className="min-h-screen pt-20 md:pt-24">{children}</main>
       <Footer />
       <CartDrawer />
       <NewsletterOverlay />

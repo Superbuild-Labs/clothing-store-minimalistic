@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { HeroSection } from "@/components/hero-section";
-import { Button } from "@/components/ui/button";
+import { buttonClassName } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FallbackImage } from "@/components/ui/fallback-image";
 import { Heading } from "@/components/ui/heading";
@@ -76,14 +76,14 @@ export default function HomePage() {
                       className="object-cover transition-transform duration-900 ease-editorial group-hover:scale-[1.08]"
                     />
                   ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/66 via-foreground/8 to-transparent transition-opacity duration-500 group-hover:from-foreground/54 group-hover:via-foreground/14" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/82 via-foreground/34 to-transparent transition-opacity duration-500 group-hover:from-foreground/72 group-hover:via-foreground/24" />
                 </div>
 
-                <div className="absolute bottom-0 p-6">
-                  <p className="font-heading text-3xl tracking-[-0.01em] text-surface transition-transform duration-500 group-hover:-translate-y-0.5">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/56 via-foreground/28 to-transparent p-6">
+                  <p className="text-shadow-soft font-heading text-3xl tracking-[-0.01em] text-surface transition-transform duration-500 group-hover:-translate-y-0.5">
                     {category.title}
                   </p>
-                  <p className="mt-2 max-w-[22ch] font-body text-sm text-surface/80 transition-colors duration-500 group-hover:text-surface/92">
+                  <p className="text-shadow-soft-sm mt-2 max-w-[22ch] font-body text-sm text-white transition-colors duration-500 group-hover:text-white">
                     {category.subtitle}
                   </p>
                 </div>
@@ -107,15 +107,20 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col justify-end gap-4">
-            <Link href="/shop" className="w-full">
-              <Button size="lg" className="w-full">
-                Browse Full Shop
-              </Button>
+            <Link
+              href="/shop"
+              className={buttonClassName({ size: "lg", className: "w-full" })}
+            >
+              Browse Full Shop
             </Link>
-            <Link href="/product/alpaca-coat" className="w-full">
-              <Button variant="secondary" className="w-full opacity-90 hover:opacity-100">
-                View Signature Piece
-              </Button>
+            <Link
+              href="/product/alpaca-coat"
+              className={buttonClassName({
+                variant: "secondary",
+                className: "w-full opacity-90 hover:opacity-100",
+              })}
+            >
+              View Signature Piece
             </Link>
           </div>
         </Container>

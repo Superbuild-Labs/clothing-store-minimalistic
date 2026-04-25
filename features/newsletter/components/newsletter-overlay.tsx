@@ -1,9 +1,10 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { useShopStore } from "@/store/use-store";
 
 const DISMISS_KEY = "eleve-newsletter-dismissed";
 const SCROLL_THRESHOLD = 320;
@@ -12,6 +13,9 @@ export function NewsletterOverlay() {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const isCartOpen = useShopStore((state) => state.isCartOpen);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
 
   useEffect(() => {
     const wasDismissed = window.localStorage.getItem(DISMISS_KEY) === "true";
@@ -20,14 +24,14 @@ export function NewsletterOverlay() {
     }
 
     const onScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
+      if (!isCartOpen && window.scrollY > SCROLL_THRESHOLD) {
         setIsVisible(true);
       }
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isCartOpen]);
 
   const closeOverlay = useCallback(() => {
     setIsVisible(false);
@@ -39,14 +43,70 @@ export function NewsletterOverlay() {
       return;
     }
 
+    const previousActiveElement = document.activeElement as HTMLElement | null;
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "textarea:not([disabled])",
+      'input:not([disabled]):not([type="hidden"])',
+      "select:not([disabled])",
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(",");
+
+    const getFocusable = () => {
+      if (!dialogRef.current) {
+        return [] as HTMLElement[];
+      }
+
+      return Array.from(dialogRef.current.querySelectorAll<HTMLElement>(focusableSelector));
+    };
+
     const onEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closeOverlay();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusable = getFocusable();
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const activeElement = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey && activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onEscape);
-    return () => window.removeEventListener("keydown", onEscape);
+
+    requestAnimationFrame(() => {
+      const focusable = getFocusable();
+      if (focusable.length > 0) {
+        focusable[0].focus();
+      } else {
+        dialogRef.current?.focus();
+      }
+    });
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onEscape);
+      previousActiveElement?.focus();
+    };
   }, [isVisible, closeOverlay]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -55,7 +115,7 @@ export function NewsletterOverlay() {
     window.localStorage.setItem(DISMISS_KEY, "true");
   };
 
-  if (!isVisible) {
+  if (!isVisible || isCartOpen) {
     return null;
   }
 
@@ -66,9 +126,15 @@ export function NewsletterOverlay() {
     >
       <div
         onClick={(event) => event.stopPropagation()}
-        className="relative w-full max-w-md rounded-sm border border-outline bg-surface p-6 shadow-xl sm:p-7"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-sm border border-outline bg-surface p-6 shadow-xl focus:outline-none sm:p-7"
       >
         <button
+          type="button"
           onClick={closeOverlay}
           aria-label="Close newsletter"
           className="absolute right-3 top-3 text-charcoal/70 transition-colors hover:text-foreground"
@@ -78,7 +144,9 @@ export function NewsletterOverlay() {
 
         {isSubmitted ? (
           <div>
-            <p className="font-heading text-4xl leading-none text-foreground">You are in.</p>
+            <h2 id={titleId} className="font-heading text-4xl leading-none text-foreground">
+              You are in.
+            </h2>
             <p className="mt-3 font-body text-sm text-charcoal/76">
               Thank you for subscribing. You will receive collection notes and early access updates.
             </p>
@@ -91,9 +159,9 @@ export function NewsletterOverlay() {
             <p className="font-body text-[11px] uppercase tracking-[0.2em] text-accent">
               Newsletter
             </p>
-            <p className="mt-2 font-heading text-5xl leading-[0.9] text-foreground">
+            <h2 id={titleId} className="mt-2 font-heading text-5xl leading-[0.9] text-foreground">
               Join the ELEVE List
-            </p>
+            </h2>
             <p className="mt-3 font-body text-sm text-charcoal/78">
               Receive editorial drops, material stories, and early collection previews.
             </p>

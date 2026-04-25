@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { buttonClassName } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 
@@ -16,8 +16,8 @@ export default function NotFound() {
           The piece you are looking for is no longer in this edit. Browse the full
           collection to discover current releases.
         </p>
-        <Link href="/shop" className="mt-7">
-          <Button>Go to Shop</Button>
+        <Link href="/shop" className={buttonClassName({ className: "mt-7" })}>
+          Go to Shop
         </Link>
       </Container>
     </Section>

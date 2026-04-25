@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { buttonClassName } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PageTransition } from "@/components/ui/page-transition";
@@ -42,8 +42,8 @@ export default function AboutPage() {
             <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-charcoal/78">
               Explore timeless coats, tailoring, knits, and accessories that pair easily season after season.
             </p>
-            <Link href="/shop" className="mt-7 inline-block">
-              <Button>Shop the Collection</Button>
+            <Link href="/shop" className={buttonClassName({ className: "mt-7" })}>
+              Shop the Collection
             </Link>
           </div>
 

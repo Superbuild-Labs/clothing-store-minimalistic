@@ -33,7 +33,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           <motion.div
             whileHover={{ scale: 1.045 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="h-full w-full"
+              className="relative h-full w-full"
           >
             <FallbackImage
               src={primaryImage}
@@ -57,7 +57,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           <div className="pointer-events-none absolute inset-0 bg-charcoal/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {product.badge ? (
-            <span className="absolute left-3 top-3 rounded-sm border border-outline bg-background/92 px-2 py-1 font-body text-[10px] uppercase tracking-luxury text-charcoal/82">
+            <span className="absolute left-3 top-3 rounded-sm border border-surface/50 bg-charcoal/86 px-2 py-1 font-body text-[10px] uppercase tracking-luxury text-surface shadow-[0_8px_18px_rgba(0,0,0,0.24)] backdrop-blur-[2px]">
               {product.badge}
             </span>
           ) : null}

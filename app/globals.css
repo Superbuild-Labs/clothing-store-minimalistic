@@ -48,4 +48,12 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-shadow-soft {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
+  }
+
+  .text-shadow-soft-sm {
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.38);
+  }
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { FormEvent, useState } from "react";
 import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
@@ -10,6 +13,20 @@ const footerLinks = [
 ];
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      return;
+    }
+
+    setIsSubmitted(true);
+    setEmail("");
+  };
+
   return (
     <footer className="mt-24 border-t border-outline bg-surface-alt">
       <Container className="grid gap-14 py-16 md:grid-cols-3">
@@ -37,19 +54,26 @@ export function Footer() {
           <p className="font-body text-xs uppercase tracking-luxury text-charcoal/72">
             Newsletter Sign Up
           </p>
-          <div className="mt-4 flex items-center border-b border-outline pb-2">
+          <form onSubmit={handleSubmit} className="mt-4 flex items-center gap-3 border-b border-outline pb-2">
             <input
               type="email"
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               placeholder="Email Address"
               className="w-full bg-transparent font-body text-sm outline-none placeholder:text-charcoal/52"
             />
             <button
+              type="submit"
               aria-label="Subscribe"
               className="font-body text-xl leading-none text-foreground transition-opacity hover:opacity-70"
             >
               &gt;
             </button>
-          </div>
+          </form>
+          <p aria-live="polite" className="mt-3 min-h-5 font-body text-xs text-charcoal/70">
+            {isSubmitted ? "Thanks for subscribing." : ""}
+          </p>
           <p className="mt-10 font-body text-xs uppercase tracking-[0.08em] text-charcoal/65">
             © 2026 ELEVE. All rights reserved.
           </p>
