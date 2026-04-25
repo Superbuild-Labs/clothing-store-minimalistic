@@ -13,6 +13,9 @@ import { FallbackImage } from "@/components/ui/fallback-image";
 import { formatCurrency } from "@/lib/currency";
 import { useShopStore } from "@/store/use-store";
 
+const fieldClassName =
+  "h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm transition-colors focus:border-charcoal focus:outline-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-focus";
+
 export default function CheckoutPage() {
   const router = useRouter();
   const cartItems = useShopStore((state) => state.cartItems);
@@ -65,7 +68,7 @@ export default function CheckoutPage() {
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
               <form onSubmit={handleSubmit} className="space-y-6 rounded-sm border border-outline bg-surface p-6 sm:p-8">
                 <fieldset className="space-y-4">
-                  <legend className="font-body text-xs uppercase tracking-luxury text-charcoal/74">
+                  <legend className="font-body text-xs uppercase text-charcoal/75">
                     Contact
                   </legend>
                   <input
@@ -74,7 +77,7 @@ export default function CheckoutPage() {
                     required
                     autoComplete="name"
                     placeholder="Full name"
-                    className="h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                    className={fieldClassName}
                   />
                   <input
                     type="email"
@@ -82,19 +85,19 @@ export default function CheckoutPage() {
                     required
                     autoComplete="email"
                     placeholder="Email"
-                    className="h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                    className={fieldClassName}
                   />
                   <input
                     type="tel"
                     name="phone"
                     autoComplete="tel"
                     placeholder="Phone (optional)"
-                    className="h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                    className={fieldClassName}
                   />
                 </fieldset>
 
                 <fieldset className="space-y-4">
-                  <legend className="font-body text-xs uppercase tracking-luxury text-charcoal/74">
+                  <legend className="font-body text-xs uppercase text-charcoal/75">
                     Delivery Address
                   </legend>
                   <input
@@ -103,14 +106,14 @@ export default function CheckoutPage() {
                     required
                     autoComplete="address-line1"
                     placeholder="Address line 1"
-                    className="h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                    className={fieldClassName}
                   />
                   <input
                     type="text"
                     name="addressLine2"
                     autoComplete="address-line2"
                     placeholder="Address line 2 (optional)"
-                    className="h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                    className={fieldClassName}
                   />
                   <div className="grid gap-3 sm:grid-cols-3">
                     <input
@@ -119,7 +122,7 @@ export default function CheckoutPage() {
                       required
                       autoComplete="address-level2"
                       placeholder="City"
-                      className="h-11 rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                      className={fieldClassName}
                     />
                     <input
                       type="text"
@@ -127,7 +130,7 @@ export default function CheckoutPage() {
                       required
                       autoComplete="address-level1"
                       placeholder="State"
-                      className="h-11 rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                      className={fieldClassName}
                     />
                     <input
                       type="text"
@@ -135,13 +138,13 @@ export default function CheckoutPage() {
                       required
                       autoComplete="postal-code"
                       placeholder="ZIP"
-                      className="h-11 rounded-sm border border-outline bg-background px-3 font-body text-sm outline-none placeholder:text-charcoal/55"
+                      className={fieldClassName}
                     />
                   </div>
                 </fieldset>
 
                 <fieldset className="space-y-3">
-                  <legend className="font-body text-xs uppercase tracking-luxury text-charcoal/74">
+                  <legend className="font-body text-xs uppercase text-charcoal/75">
                     Payment
                   </legend>
                   <p className="rounded-sm border border-outline bg-surface-alt p-3 font-body text-sm text-charcoal/75">
@@ -152,10 +155,13 @@ export default function CheckoutPage() {
                 <Button type="submit" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? "Placing Order..." : "Place Order"}
                 </Button>
+                <p className="font-body text-xs leading-relaxed text-charcoal/70">
+                  Shipping, taxes, and simulated payment confirmation are summarized before order completion.
+                </p>
               </form>
 
               <aside className="rounded-sm border border-outline bg-surface p-6 sm:p-8 lg:sticky lg:top-28">
-                <p className="font-body text-xs uppercase tracking-luxury text-charcoal/74">Order Summary</p>
+                <p className="font-body text-xs uppercase text-charcoal/75">Order Summary</p>
                 <div className="mt-5 space-y-4">
                   {cartItems.map((item) => (
                     <article key={item.key} className="flex gap-3 border-b border-outline pb-4">
@@ -173,7 +179,7 @@ export default function CheckoutPage() {
                         <p className="mt-1 font-body text-xs text-charcoal/70">
                           {[item.color, item.size].filter(Boolean).join(" / ") || "Standard"}
                         </p>
-                        <p className="mt-2 font-body text-xs uppercase tracking-[0.14em] text-charcoal/72">
+                        <p className="mt-2 font-body text-xs uppercase text-charcoal/70">
                           Qty {item.quantity}
                         </p>
                       </div>
@@ -184,7 +190,7 @@ export default function CheckoutPage() {
                   ))}
                 </div>
 
-                <div className="mt-5 space-y-2 border-t border-outline pt-4 font-body text-sm text-charcoal/82">
+                <div className="mt-5 space-y-2 border-t border-outline pt-4 font-body text-sm text-charcoal/80">
                   <div className="flex items-center justify-between">
                     <span>Subtotal</span>
                     <span>{formatCurrency(subtotal)}</span>

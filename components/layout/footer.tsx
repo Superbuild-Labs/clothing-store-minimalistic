@@ -4,12 +4,13 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
+import { LogoMark } from "@/components/ui/logo-mark";
 
 const footerLinks = [
   { label: "About", href: "/about" },
   { label: "Search", href: "/search" },
-  { label: "Shipping & Returns (Coming Soon)", href: "/about#shipping-returns" },
-  { label: "Privacy Policy (Coming Soon)", href: "/about#privacy" },
+  { label: "Shipping & Returns", href: "/about#shipping-returns" },
+  { label: "Privacy Policy", href: "/about#privacy" },
 ];
 
 export function Footer() {
@@ -31,8 +32,8 @@ export function Footer() {
     <footer className="mt-24 border-t border-outline bg-surface-alt">
       <Container className="grid gap-14 py-16 md:grid-cols-3">
         <div>
-          <p className="font-heading text-2xl tracking-[0.22em] text-foreground">ELEVE</p>
-          <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-charcoal/72">
+          <LogoMark className="w-[116px] text-foreground" />
+          <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-charcoal/70">
             Curating a lifestyle of quiet confidence and artisanal quality for the
             modern minimalist wardrobe.
           </p>
@@ -43,7 +44,7 @@ export function Footer() {
             <Link
               key={link.label}
               href={link.href}
-              className="block font-body text-xs uppercase tracking-luxury text-charcoal/76 transition-colors hover:text-foreground"
+              className="block font-body text-xs uppercase text-charcoal/75 transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -51,7 +52,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/72">
+          <p className="font-body text-xs uppercase text-charcoal/70">
             Newsletter Sign Up
           </p>
           <form onSubmit={handleSubmit} className="mt-4 flex items-center gap-3 border-b border-outline pb-2">
@@ -61,7 +62,7 @@ export function Footer() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="Email Address"
-              className="w-full bg-transparent font-body text-sm outline-none placeholder:text-charcoal/52"
+              className="w-full bg-transparent font-body text-sm outline-none focus-visible:outline-none"
             />
             <button
               type="submit"
@@ -74,7 +75,7 @@ export function Footer() {
           <p aria-live="polite" className="mt-3 min-h-5 font-body text-xs text-charcoal/70">
             {isSubmitted ? "Thanks for subscribing." : ""}
           </p>
-          <p className="mt-10 font-body text-xs uppercase tracking-[0.08em] text-charcoal/65">
+          <p className="mt-10 font-body text-xs uppercase text-charcoal/60">
             © 2026 ELEVE. All rights reserved.
           </p>
         </div>

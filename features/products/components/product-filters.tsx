@@ -102,13 +102,13 @@ export function ProductFilters({
     <aside className="space-y-8 rounded-sm border border-outline bg-surface p-5 lg:sticky lg:top-28">
       <div>
         <div className="mb-3 flex items-center justify-between">
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">
+          <p className="font-body text-xs uppercase text-charcoal/75">
             Search
           </p>
           {activeFilters.length > 0 ? (
             <button
               onClick={onClearAll}
-              className="font-body text-[10px] uppercase tracking-[0.2em] text-charcoal/72 underline-offset-4 hover:underline"
+              className="font-body text-xs uppercase text-charcoal/70 underline-offset-4 hover:underline"
             >
               Clear all
             </button>
@@ -120,11 +120,11 @@ export function ProductFilters({
             onChange={(event) => setSearchInput(event.target.value)}
             type="search"
             placeholder="Find pieces"
-            className="w-full border-b border-outline bg-transparent pb-2 font-body text-sm outline-none placeholder:text-charcoal/50"
+            className="w-full border-b border-outline bg-transparent pb-2 font-body text-sm outline-none transition-colors focus:border-charcoal focus-visible:outline-none"
           />
           <button
             type="submit"
-            className="rounded-sm border border-outline px-3 py-1.5 font-body text-[10px] uppercase tracking-[0.14em] text-charcoal/78 transition-colors hover:border-charcoal hover:text-foreground"
+            className="rounded-sm border border-outline px-3 py-1.5 font-body text-xs uppercase text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
           >
             Search
           </button>
@@ -136,7 +136,7 @@ export function ProductFilters({
           {activeFilters.map((filter) => (
             <span
               key={filter}
-              className="rounded-full border border-outline bg-surface-alt px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.13em] text-charcoal/75"
+              className="rounded-full border border-outline bg-surface-alt px-2.5 py-1 font-body text-xs uppercase text-charcoal/75"
             >
               {filter}
             </span>
@@ -147,9 +147,10 @@ export function ProductFilters({
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
           onClick={() => toggleSection("sort")}
+          aria-expanded={expandedSections.sort}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
         >
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">Sort</p>
+          <p className="font-body text-xs uppercase text-charcoal/75">Sort</p>
           <ChevronDown
             size={15}
             className={cn("transition-transform lg:hidden", expandedSections.sort ? "rotate-180" : "rotate-0")}
@@ -159,7 +160,7 @@ export function ProductFilters({
           <select
             value={sort}
             onChange={(event) => onSortChange(event.target.value as ProductSort)}
-            className="w-full rounded-sm border border-outline bg-transparent px-3 py-2 font-body text-xs uppercase tracking-luxury text-charcoal/80"
+            className="w-full rounded-sm border border-outline bg-transparent px-3 py-2 font-body text-xs uppercase text-charcoal/80"
           >
             <option value="newest">Newest</option>
             <option value="price-asc">Price Low-High</option>
@@ -172,9 +173,10 @@ export function ProductFilters({
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
           onClick={() => toggleSection("size")}
+          aria-expanded={expandedSections.size}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
         >
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">Size</p>
+          <p className="font-body text-xs uppercase text-charcoal/75">Size</p>
           <ChevronDown
             size={15}
             className={cn("transition-transform lg:hidden", expandedSections.size ? "rotate-180" : "rotate-0")}
@@ -186,7 +188,7 @@ export function ProductFilters({
               key={size}
               onClick={() => onToggleSize(size)}
               className={cn(
-                "w-full rounded-sm border px-3 py-2 text-left font-body text-xs uppercase tracking-luxury transition-all",
+                "w-full rounded-sm border px-3 py-2 text-left font-body text-xs uppercase transition-all",
                 selectedSizes.includes(size)
                   ? "border-charcoal bg-charcoal text-surface"
                   : "border-outline text-charcoal/70 hover:border-charcoal hover:text-foreground",
@@ -201,9 +203,10 @@ export function ProductFilters({
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
           onClick={() => toggleSection("category")}
+          aria-expanded={expandedSections.category}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
         >
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">Category</p>
+          <p className="font-body text-xs uppercase text-charcoal/75">Category</p>
           <ChevronDown
             size={15}
             className={cn(
@@ -218,7 +221,7 @@ export function ProductFilters({
               key={category}
               onClick={() => onCategoryChange(category)}
               className={cn(
-                "w-full rounded-sm border px-3 py-2 text-left font-body text-xs uppercase tracking-luxury transition-all",
+                "w-full rounded-sm border px-3 py-2 text-left font-body text-xs uppercase transition-all",
                 selectedCategory === category
                   ? "border-charcoal bg-charcoal text-surface"
                   : "border-outline text-charcoal/70 hover:border-charcoal hover:text-foreground",
@@ -233,11 +236,12 @@ export function ProductFilters({
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
           onClick={() => toggleSection("price")}
+          aria-expanded={expandedSections.price}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
         >
           <div className="flex items-center gap-2">
-            <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">Price</p>
-            <p className="font-body text-[11px] text-charcoal/72">
+            <p className="font-body text-xs uppercase text-charcoal/75">Price</p>
+            <p className="font-body text-[11px] text-charcoal/70">
               {formatCurrency(minPrice)} - {formatCurrency(maxPrice)}
             </p>
           </div>
@@ -271,9 +275,10 @@ export function ProductFilters({
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
           onClick={() => toggleSection("color")}
+          aria-expanded={expandedSections.color}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
         >
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">Color</p>
+          <p className="font-body text-xs uppercase text-charcoal/75">Color</p>
           <ChevronDown
             size={15}
             className={cn("transition-transform lg:hidden", expandedSections.color ? "rotate-180" : "rotate-0")}
@@ -285,7 +290,7 @@ export function ProductFilters({
               key={color}
               onClick={() => onToggleColor(color)}
               className={cn(
-                "rounded-full border px-3 py-1.5 font-body text-[10px] uppercase tracking-[0.14em]",
+                "rounded-full border px-3 py-1.5 font-body text-xs uppercase",
                 selectedColors.includes(color)
                   ? "border-charcoal bg-charcoal text-surface"
                   : "border-outline text-charcoal/75 hover:border-charcoal",
@@ -300,9 +305,10 @@ export function ProductFilters({
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
           onClick={() => toggleSection("material")}
+          aria-expanded={expandedSections.material}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
         >
-          <p className="font-body text-xs uppercase tracking-luxury text-charcoal/75">Material</p>
+          <p className="font-body text-xs uppercase text-charcoal/75">Material</p>
           <ChevronDown
             size={15}
             className={cn(
@@ -326,7 +332,7 @@ export function ProductFilters({
         </div>
       </div>
 
-      <p className="font-body text-xs text-charcoal/62">{products.length} products available</p>
+      <p className="font-body text-xs text-charcoal/60">{products.length} products available</p>
     </aside>
   );
 }

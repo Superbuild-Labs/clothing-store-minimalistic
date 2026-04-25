@@ -63,7 +63,7 @@ export default function HomePage() {
               <Link
                 href={category.href}
                 key={category.title}
-                className="group relative overflow-hidden rounded-sm border border-outline bg-surface"
+                className="group relative overflow-hidden rounded-sm border border-outline/70 bg-editorial-highlight"
                 style={{ animationDelay: `${index * 90}ms` }}
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
@@ -73,17 +73,17 @@ export default function HomePage() {
                       alt={category.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-900 ease-editorial group-hover:scale-[1.08]"
+                      className="editorial-image object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.035]"
                     />
                   ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/82 via-foreground/34 to-transparent transition-opacity duration-500 group-hover:from-foreground/72 group-hover:via-foreground/24" />
+                  <div className="absolute inset-0 bg-charcoal/30 transition-opacity duration-500 group-hover:bg-charcoal/25" />
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/56 via-foreground/28 to-transparent p-6">
-                  <p className="text-shadow-soft font-heading text-3xl tracking-[-0.01em] text-surface transition-transform duration-500 group-hover:-translate-y-0.5">
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="text-shadow-soft-sm font-heading text-3xl text-surface transition-transform duration-500 group-hover:-translate-y-0.5">
                     {category.title}
                   </p>
-                  <p className="text-shadow-soft-sm mt-2 max-w-[22ch] font-body text-sm text-white transition-colors duration-500 group-hover:text-white">
+                  <p className="text-shadow-soft-sm mt-2 max-w-[22ch] font-body text-sm text-surface/90 transition-colors duration-500 group-hover:text-surface">
                     {category.subtitle}
                   </p>
                 </div>
@@ -93,11 +93,11 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="py-20 md:py-28">
-        <Container className="grid gap-8 rounded-sm border border-outline bg-surface-alt p-8 md:grid-cols-[1.3fr_1fr] md:p-12">
+      <Section tone="elevated" className="py-16 md:py-24">
+        <Container className="grid gap-8 md:grid-cols-[1.3fr_1fr]">
           <div>
-            <p className="font-body text-xs uppercase tracking-luxury text-accent">Lookbook Note</p>
-            <h2 className="mt-3 max-w-lg font-heading text-5xl leading-[0.96] tracking-[-0.02em] text-foreground">
+            <p className="font-body text-xs uppercase text-accent">Lookbook Note</p>
+            <h2 className="mt-3 max-w-lg font-heading text-5xl leading-[1] text-foreground">
               Designed to Feel Like a Printed Fashion Editorial
             </h2>
             <p className="mt-5 max-w-xl font-body text-sm leading-relaxed text-charcoal/75">

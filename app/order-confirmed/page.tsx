@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import { buttonClassName } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -9,7 +10,7 @@ import { Heading } from "@/components/ui/heading";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Section } from "@/components/ui/section";
 
-export default function OrderConfirmedPage() {
+function OrderConfirmedContent() {
   const searchParams = useSearchParams();
   const orderNumber = searchParams.get("order") ?? "ELV-000000";
 
@@ -25,7 +26,7 @@ export default function OrderConfirmedPage() {
               align="center"
             />
 
-            <p className="mt-5 font-body text-xs uppercase tracking-[0.16em] text-charcoal/72">
+            <p className="mt-5 font-body text-xs uppercase text-charcoal/70">
               Order Number
             </p>
             <p className="mt-2 font-heading text-5xl leading-none text-foreground">{orderNumber}</p>
@@ -42,5 +43,13 @@ export default function OrderConfirmedPage() {
         </Container>
       </Section>
     </PageTransition>
+  );
+}
+
+export default function OrderConfirmedPage() {
+  return (
+    <Suspense fallback={null}>
+      <OrderConfirmedContent />
+    </Suspense>
   );
 }

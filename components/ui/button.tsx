@@ -7,12 +7,12 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-charcoal text-surface border border-charcoal shadow-[0_6px_18px_rgba(24,24,24,0.16)] hover:-translate-y-0.5 hover:bg-accent hover:border-accent hover:shadow-[0_10px_24px_rgba(24,24,24,0.2)]",
+    "border border-charcoal bg-charcoal text-surface hover:-translate-y-px hover:border-accent hover:bg-accent active:translate-y-0",
   secondary:
-    "bg-transparent text-foreground/92 border border-outline hover:border-charcoal/80 hover:bg-surface-alt",
-  ghost: "bg-transparent text-foreground border border-transparent hover:bg-surface-alt",
+    "border border-outline bg-transparent text-foreground/90 hover:border-charcoal/80 hover:bg-surface-alt active:bg-surface-soft",
+  ghost: "border border-transparent bg-transparent text-foreground hover:bg-surface-alt active:bg-surface-soft",
   subtle:
-    "bg-surface-alt text-foreground border border-outline hover:bg-surface-soft hover:border-charcoal",
+    "border border-outline bg-surface-alt text-foreground hover:border-charcoal hover:bg-surface-soft active:bg-editorial-highlight",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -38,7 +38,7 @@ export function buttonClassName({
   className,
 }: ButtonClassNameOptions = {}) {
   return cn(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-body font-medium uppercase tracking-[0.2em] transition-all duration-300 ease-editorial disabled:pointer-events-none disabled:opacity-45",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-body font-semibold uppercase transition-all duration-300 ease-editorial focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-45",
     variantClasses[variant],
     sizeClasses[size],
     className,

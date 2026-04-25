@@ -131,13 +131,13 @@ export function NewsletterOverlay() {
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-sm border border-outline bg-surface p-6 shadow-xl focus:outline-none sm:p-7"
+        className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-sm border border-outline bg-surface p-6 focus:outline-none sm:p-7"
       >
         <button
           type="button"
           onClick={closeOverlay}
           aria-label="Close newsletter"
-          className="absolute right-3 top-3 text-charcoal/70 transition-colors hover:text-foreground"
+          className="absolute right-3 top-3 rounded-sm p-1 text-charcoal/70 transition-colors hover:text-foreground"
         >
           <X size={16} />
         </button>
@@ -147,7 +147,7 @@ export function NewsletterOverlay() {
             <h2 id={titleId} className="font-heading text-4xl leading-none text-foreground">
               You are in.
             </h2>
-            <p className="mt-3 font-body text-sm text-charcoal/76">
+            <p className="mt-3 font-body text-sm text-charcoal/75">
               Thank you for subscribing. You will receive collection notes and early access updates.
             </p>
             <Button className="mt-5 w-full" onClick={closeOverlay}>
@@ -156,13 +156,13 @@ export function NewsletterOverlay() {
           </div>
         ) : (
           <div>
-            <p className="font-body text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className="font-body text-xs uppercase text-accent">
               Newsletter
             </p>
             <h2 id={titleId} className="mt-2 font-heading text-5xl leading-[0.9] text-foreground">
               Join the ELEVE List
             </h2>
-            <p className="mt-3 font-body text-sm text-charcoal/78">
+            <p className="mt-3 font-body text-sm text-charcoal/80">
               Receive editorial drops, material stories, and early collection previews.
             </p>
 
@@ -173,7 +173,7 @@ export function NewsletterOverlay() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="Email address"
-                className="w-full rounded-sm border border-outline bg-background px-3 py-2 font-body text-sm outline-none placeholder:text-charcoal/55"
+                className="w-full rounded-sm border border-outline bg-background px-3 py-2 font-body text-sm transition-colors focus:border-charcoal focus:outline-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-focus"
               />
               <Button type="submit" className="w-full">
                 Subscribe

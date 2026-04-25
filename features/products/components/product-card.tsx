@@ -23,15 +23,16 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const secondaryImage = images[1];
 
   return (
-    <article className="group flex flex-col">
+    <article className="group flex h-full flex-col">
       <Link
         href={`/product/${product.id}`}
         onClick={() => setSelectedProduct(product.id)}
-        className="block"
+        className="block rounded-sm focus-visible:outline-focus"
+        aria-label={`View ${product.name}`}
       >
-        <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-soft">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-sm border border-outline/70 bg-editorial-highlight">
           <motion.div
-            whileHover={{ scale: 1.045 }}
+            whileHover={{ scale: 1.025 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               className="relative h-full w-full"
           >
@@ -41,7 +42,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               fill
               priority={priority}
               sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-              className="object-cover transition-opacity duration-500"
+              className="editorial-image object-cover transition-opacity duration-500"
             />
             {secondaryImage ? (
               <FallbackImage
@@ -49,7 +50,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 alt={`${product.name} alternate`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                className="editorial-image object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
             ) : null}
           </motion.div>
@@ -57,26 +58,26 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           <div className="pointer-events-none absolute inset-0 bg-charcoal/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {product.badge ? (
-            <span className="absolute left-3 top-3 rounded-sm border border-surface/50 bg-charcoal/86 px-2 py-1 font-body text-[10px] uppercase tracking-luxury text-surface shadow-[0_8px_18px_rgba(0,0,0,0.24)] backdrop-blur-[2px]">
+            <span className="absolute left-3 top-3 rounded-sm border border-surface/70 bg-surface/90 px-2.5 py-1 font-body text-[10px] uppercase text-charcoal backdrop-blur-[2px]">
               {product.badge}
             </span>
           ) : null}
         </div>
       </Link>
 
-      <div className="mt-4 space-y-3">
-        <div className="space-y-1 text-center">
-          <p className="font-heading text-[2rem] leading-none tracking-[-0.01em] text-foreground">
+      <div className="mt-4 flex flex-1 flex-col gap-4">
+        <div className="space-y-1">
+          <p className="font-heading text-2xl leading-tight text-foreground md:text-[1.7rem]">
             {product.name}
           </p>
-          <p className="font-body text-[11px] uppercase tracking-[0.16em] text-charcoal/72">
+          <p className="font-body text-xs text-charcoal/70">{product.material}</p>
+          <p className="font-body text-sm text-foreground">
             {formatCurrency(product.price)}
           </p>
         </div>
 
         <Button
-          variant="ghost"
-          className="w-full border border-outline"
+          className="mt-auto w-full"
           onClick={() =>
             addToCart(product, {
               size: product.sizes[0],

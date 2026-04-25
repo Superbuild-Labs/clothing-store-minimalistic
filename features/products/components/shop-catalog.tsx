@@ -74,10 +74,10 @@ export function ShopCatalog({
         {filteredProducts.length === 0 ? (
           <div className="flex min-h-[420px] flex-col items-center justify-center rounded-sm border border-dashed border-outline bg-surface-alt px-6 text-center">
             <p className="font-heading text-4xl leading-none text-foreground">{emptyTitle}</p>
-            <p className="mt-3 max-w-md font-body text-sm text-charcoal/72">{emptyDescription}</p>
+            <p className="mt-3 max-w-md font-body text-sm text-charcoal/70">{emptyDescription}</p>
             <button
               onClick={clearAll}
-              className="mt-6 rounded-sm border border-outline px-4 py-2 font-body text-xs uppercase tracking-luxury text-charcoal/85 transition-colors hover:border-charcoal hover:text-foreground"
+              className="mt-6 rounded-sm border border-outline px-4 py-2 font-body text-xs uppercase text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
             >
               Clear filters
             </button>

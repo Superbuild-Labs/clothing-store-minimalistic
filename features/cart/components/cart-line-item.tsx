@@ -1,6 +1,5 @@
 import { Minus, Plus, X } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { FallbackImage } from "@/components/ui/fallback-image";
 import { formatCurrency } from "@/lib/currency";
 import { CartItem } from "@/store/use-store";
@@ -26,14 +25,14 @@ export function CartLineItem({
           alt={item.name}
           fill
           sizes="96px"
-          className="object-cover"
+          className="editorial-image object-cover"
         />
       </div>
 
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h3 className="font-heading text-2xl leading-none tracking-[-0.01em] text-foreground">
+            <h3 className="font-heading text-2xl leading-none text-foreground">
               {item.name}
             </h3>
             <p className="mt-2 font-body text-xs text-charcoal/70">
@@ -43,7 +42,7 @@ export function CartLineItem({
           <button
             onClick={onRemove}
             aria-label="Remove item"
-            className="text-charcoal/60 transition-colors hover:text-foreground"
+            className="rounded-sm p-1 text-charcoal/60 transition-colors hover:text-foreground"
           >
             <X size={14} />
           </button>

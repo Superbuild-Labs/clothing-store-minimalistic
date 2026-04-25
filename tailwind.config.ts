@@ -11,15 +11,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        surface: "var(--surface)",
-        "surface-alt": "var(--surface-alt)",
-        "surface-soft": "var(--surface-soft)",
-        outline: "var(--outline)",
-        accent: "var(--accent)",
-        gold: "var(--gold)",
-        charcoal: "var(--charcoal)",
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        "surface-alt": "rgb(var(--surface-alt) / <alpha-value>)",
+        "surface-soft": "rgb(var(--surface-soft) / <alpha-value>)",
+        outline: "rgb(var(--outline) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        gold: "rgb(var(--gold) / <alpha-value>)",
+        charcoal: "rgb(var(--charcoal) / <alpha-value>)",
+        "editorial-highlight": "rgb(var(--editorial-highlight) / <alpha-value>)",
+        focus: "rgb(var(--focus) / <alpha-value>)",
       },
       maxWidth: {
         container: "1280px",
@@ -27,9 +29,6 @@ const config: Config = {
       fontFamily: {
         heading: ["var(--font-heading)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
-      },
-      letterSpacing: {
-        luxury: "0.14em",
       },
       boxShadow: {
         flat: "0 0 0 1px rgba(79,68,69,0.14)",

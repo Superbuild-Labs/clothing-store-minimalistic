@@ -15,6 +15,10 @@
     @apply bg-background;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-foreground;
   }
@@ -40,7 +44,23 @@
   }
 
   ::selection {
-    background: rgba(112, 88, 91, 0.2);
+    background: rgba(88, 80, 75, 0.18);
+  }
+
+  :focus-visible {
+    outline: 1.5px solid rgb(var(--focus));
+    outline-offset: 4px;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply text-foreground;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(38, 37, 32, 0.52);
   }
 }
 
@@ -55,5 +75,15 @@
 
   .text-shadow-soft-sm {
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.38);
+  }
+
+  .editorial-image {
+    filter: saturate(0.86) contrast(1.03) brightness(0.98);
+  }
+
+  .editorial-overlay {
+    background:
+      linear-gradient(90deg, rgba(28, 28, 25, 0.58) 0%, rgba(28, 28, 25, 0.28) 38%, rgba(28, 28, 25, 0.08) 100%),
+      linear-gradient(0deg, rgba(28, 28, 25, 0.2), rgba(28, 28, 25, 0.04));
   }
 }

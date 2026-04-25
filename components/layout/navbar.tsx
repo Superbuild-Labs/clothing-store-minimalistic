@@ -7,6 +7,7 @@ import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { FormEvent, useEffect, useId, useState } from "react";
 
 import { Container } from "@/components/ui/container";
+import { LogoMark } from "@/components/ui/logo-mark";
 import { cn } from "@/lib/utils";
 import { useScrollState } from "@/hooks/use-scroll-state";
 import { productCategories } from "@/features/products/data/products";
@@ -37,10 +38,10 @@ export function Navbar() {
   }, [pathname]);
 
   const transparentState = pathname === "/" && !isScrolled;
-  const navTextClass = transparentState ? "text-surface/92 drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)]" : "text-charcoal/65";
+  const navTextClass = transparentState ? "text-surface/90" : "text-charcoal/70";
   const navHoverClass = transparentState ? "hover:text-surface" : "hover:text-foreground";
   const iconClass = transparentState
-    ? "text-surface/92 drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)] hover:text-surface"
+    ? "text-surface/90 hover:text-surface"
     : "text-foreground/75 hover:text-foreground";
 
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
@@ -55,8 +56,8 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-editorial",
         transparentState
-          ? "border-transparent bg-background/36 backdrop-blur-[2px]"
-          : "border-outline/85 bg-background/95 backdrop-blur-md",
+          ? "border-transparent bg-charcoal/10 backdrop-blur-[2px]"
+          : "border-outline/80 bg-background/95 backdrop-blur-md",
       )}
     >
       <Container className="relative flex h-20 items-center justify-between">
@@ -69,12 +70,12 @@ export function Navbar() {
                 key={link.href + link.label}
                 href={link.href}
                 className={cn(
-                  "relative py-1 font-body text-[11px] uppercase tracking-[0.2em] transition-colors",
+                  "relative py-1 font-body text-xs uppercase transition-colors focus-visible:outline-focus",
                   isActive
                       ? cn(
                           transparentState
-                            ? "text-surface after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-surface/65 drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)]"
-                            : "text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-foreground/55",
+                            ? "text-surface after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-surface/70"
+                            : "text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:bg-foreground/60",
                         )
                       : cn(navTextClass, navHoverClass),
                 )}
@@ -89,9 +90,9 @@ export function Navbar() {
           type="button"
           onClick={() => setIsMenuOpen((value) => !value)}
             className={cn(
-              "rounded-sm p-2 transition-colors md:hidden",
+              "inline-flex h-10 w-10 items-center justify-center rounded-sm transition-colors md:hidden",
               transparentState
-                ? "text-surface drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)] hover:text-surface"
+                ? "text-surface hover:text-surface"
                 : "text-foreground/90 hover:text-foreground",
             )}
           aria-label="Toggle menu"
@@ -104,13 +105,14 @@ export function Navbar() {
         <Link
           href="/"
           className={cn(
-            "absolute left-1/2 -translate-x-1/2 font-heading text-3xl tracking-[0.26em]",
+            "absolute left-1/2 -translate-x-1/2 transition-colors",
             transparentState
-              ? "text-surface drop-shadow-[0_1px_8px_rgba(0,0,0,0.34)]"
+              ? "text-surface"
               : "text-foreground",
           )}
+          aria-label="ELEVE home"
         >
-          ELEVE
+          <LogoMark className="w-[112px] sm:w-[124px]" tone={transparentState ? "light" : "dark"} />
         </Link>
 
         <div className="flex items-center gap-4 sm:gap-5">
@@ -126,14 +128,14 @@ export function Navbar() {
               }
               setIsSearchOpen(true);
             }}
-              className={cn("transition-colors", iconClass)}
+              className={cn("inline-flex h-10 w-10 items-center justify-center rounded-sm transition-colors", iconClass)}
           >
             <Search size={18} />
           </button>
           <button
             type="button"
             aria-label="Account"
-              className={cn("hidden transition-colors md:block", iconClass)}
+              className={cn("hidden h-10 w-10 items-center justify-center rounded-sm transition-colors md:inline-flex", iconClass)}
           >
             <User size={18} />
           </button>
@@ -142,10 +144,10 @@ export function Navbar() {
             onClick={openCart}
             aria-label="Open cart"
               className={cn(
-                "relative transition-colors",
+                "relative inline-flex h-10 w-10 items-center justify-center rounded-sm transition-colors",
                 transparentState
-                  ? "text-surface drop-shadow-[0_1px_6px_rgba(0,0,0,0.28)] hover:text-surface"
-                  : "text-foreground/85 hover:text-foreground",
+                  ? "text-surface hover:text-surface"
+                  : "text-foreground/90 hover:text-foreground",
               )}
           >
             <ShoppingBag size={19} />
@@ -167,10 +169,10 @@ export function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="border-t border-outline bg-background/98 backdrop-blur-md"
+            className="border-t border-outline bg-background/95 backdrop-blur-md"
           >
             <Container className="py-4 sm:py-5">
-              <div className="rounded-sm border border-outline/90 bg-surface p-4 shadow-[0_16px_34px_rgba(23,24,23,0.14)] sm:p-5">
+              <div className="rounded-sm border border-outline/90 bg-surface p-4 sm:p-5">
                 <form onSubmit={submitSearch} className="flex items-center gap-3">
                   <input
                     autoFocus
@@ -178,18 +180,18 @@ export function Navbar() {
                     onChange={(event) => setSearchQuery(event.target.value)}
                     type="search"
                     placeholder="Search by product, category, color, or material"
-                    className="w-full border-b border-outline bg-transparent pb-2.5 font-body text-base text-foreground outline-none placeholder:text-charcoal/52"
+                    className="w-full border-b border-outline bg-transparent pb-2.5 font-body text-base text-foreground outline-none focus-visible:outline-none"
                   />
                   <button
                     type="submit"
-                    className="rounded-sm border border-outline px-3 py-2 font-body text-[11px] uppercase tracking-[0.2em] text-charcoal/88 transition-colors hover:border-charcoal hover:text-foreground"
+                    className="rounded-sm border border-outline px-3 py-2 font-body text-xs uppercase text-charcoal/90 transition-colors hover:border-charcoal hover:text-foreground"
                   >
                     View
                   </button>
                 </form>
 
                 <div className="mt-4 md:hidden">
-                  <p className="mb-2 font-body text-[10px] uppercase tracking-[0.2em] text-charcoal/70">
+                  <p className="mb-2 font-body text-xs uppercase text-charcoal/70">
                     Quick Categories
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -197,7 +199,7 @@ export function Navbar() {
                       <Link
                         key={`search-quick-${category}`}
                         href={`/shop?category=${encodeURIComponent(category)}`}
-                        className="rounded-full border border-outline bg-surface-alt px-3 py-1.5 font-body text-[10px] uppercase tracking-[0.14em] text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
+                        className="rounded-full border border-outline bg-surface-alt px-3 py-1.5 font-body text-xs uppercase text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
                       >
                         {category}
                       </Link>
@@ -224,7 +226,7 @@ export function Navbar() {
             <Container className="space-y-2 py-5">
               <Link
                 href="/search"
-                className="block rounded-sm px-2 py-3 font-body text-xs uppercase tracking-[0.2em] text-charcoal/85 transition-colors hover:bg-surface hover:text-foreground"
+                className="block rounded-sm px-2 py-3 font-body text-xs uppercase text-charcoal/80 transition-colors hover:bg-surface hover:text-foreground"
               >
                 Search
               </Link>
@@ -232,7 +234,7 @@ export function Navbar() {
                 <Link
                   key={link.href + "-mobile"}
                   href={link.href}
-                  className="block rounded-sm px-2 py-3 font-body text-xs uppercase tracking-[0.2em] text-charcoal/85 transition-colors hover:bg-surface hover:text-foreground"
+                  className="block rounded-sm px-2 py-3 font-body text-xs uppercase text-charcoal/80 transition-colors hover:bg-surface hover:text-foreground"
                 >
                   {link.label}
                 </Link>

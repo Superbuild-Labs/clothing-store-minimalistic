@@ -25,6 +25,7 @@ export function FallbackImage({ src, fallbackSrc = PRODUCT_IMAGE_FALLBACK, alt, 
       {...props}
       src={resolvedSrc}
       alt={alt}
+      quality={props.quality ?? 88}
       onError={() => setHasError(true)}
     />
   );

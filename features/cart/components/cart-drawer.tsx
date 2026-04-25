@@ -124,13 +124,13 @@ export function CartDrawer() {
             className="fixed right-0 top-0 z-[80] flex h-full w-full max-w-md flex-col border-l border-outline bg-background focus:outline-none"
           >
             <header className="flex items-center justify-between border-b border-outline px-6 py-5">
-              <h2 id={headingId} className="font-heading text-3xl tracking-[-0.012em] text-foreground">
+              <h2 id={headingId} className="font-heading text-3xl text-foreground">
                 Shopping Bag
               </h2>
               <button
                 onClick={closeCart}
                 aria-label="Close cart"
-                className="font-body text-xs uppercase tracking-luxury text-charcoal/76 transition-colors hover:text-foreground"
+                className="font-body text-xs uppercase text-charcoal/75 transition-colors hover:text-foreground"
               >
                 Close
               </button>
@@ -140,7 +140,7 @@ export function CartDrawer() {
               {cartItems.length === 0 ? (
                 <div className="flex h-full flex-col items-center justify-center text-center">
                   <p className="font-heading text-3xl text-foreground">Cart is empty</p>
-                  <p className="mt-3 max-w-[20rem] font-body text-sm text-charcoal/72">
+                  <p className="mt-3 max-w-[20rem] font-body text-sm text-charcoal/70">
                     Add curated essentials from the collection to begin your order.
                   </p>
                   <Button className="mt-6" onClick={closeCart}>

@@ -24,7 +24,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
         initial={{ opacity: 0.4, scale: 0.99 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        className="relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-soft"
+        className="relative aspect-[3/4] overflow-hidden rounded-sm border border-outline/70 bg-editorial-highlight"
       >
         <FallbackImage
           src={activeImage}
@@ -32,7 +32,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 56vw"
-          className="object-cover"
+          className="editorial-image object-cover"
         />
       </motion.div>
 
@@ -41,10 +41,13 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
           {safeImages.map((image, index) => (
             <button
               key={image}
+              type="button"
               onClick={() => setActiveIndex(index)}
+              aria-label={`View ${name} image ${index + 1}`}
+              aria-pressed={index === activeIndex}
               className={cn(
-                "relative aspect-[3/4] overflow-hidden rounded-sm border",
-                index === activeIndex ? "border-charcoal" : "border-outline",
+                "relative aspect-[3/4] overflow-hidden rounded-sm border bg-editorial-highlight transition-colors",
+                index === activeIndex ? "border-charcoal" : "border-outline hover:border-charcoal/70",
               )}
             >
               <FallbackImage
@@ -52,7 +55,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
                 alt={`${name} preview ${index + 1}`}
                 fill
                 sizes="(max-width: 1024px) 33vw, 12vw"
-                className="object-cover"
+                className="editorial-image object-cover"
               />
             </button>
           ))}
