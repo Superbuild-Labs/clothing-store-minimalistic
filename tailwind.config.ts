@@ -16,6 +16,7 @@ const config: Config = {
         surface: "rgb(var(--surface) / <alpha-value>)",
         "surface-alt": "rgb(var(--surface-alt) / <alpha-value>)",
         "surface-soft": "rgb(var(--surface-soft) / <alpha-value>)",
+        "surface-strong": "rgb(var(--surface-strong) / <alpha-value>)",
         outline: "rgb(var(--outline) / <alpha-value>)",
         accent: "rgb(var(--accent) / <alpha-value>)",
         gold: "rgb(var(--gold) / <alpha-value>)",

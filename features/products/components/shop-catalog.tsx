@@ -76,6 +76,7 @@ export function ShopCatalog({
             <p className="font-heading text-4xl leading-none text-foreground">{emptyTitle}</p>
             <p className="mt-3 max-w-md font-body text-sm text-charcoal/70">{emptyDescription}</p>
             <button
+              type="button"
               onClick={clearAll}
               className="mt-6 rounded-sm border border-outline px-4 py-2 font-body text-xs uppercase text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
             >
@@ -88,7 +89,7 @@ export function ShopCatalog({
               <ProductCard
                 key={product.id}
                 product={product}
-                priority={index < 3}
+                priority={index === 0}
               />
             ))}
           </div>

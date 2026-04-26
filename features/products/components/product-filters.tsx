@@ -107,6 +107,7 @@ export function ProductFilters({
           </p>
           {activeFilters.length > 0 ? (
             <button
+              type="button"
               onClick={onClearAll}
               className="font-body text-xs uppercase text-charcoal/70 underline-offset-4 hover:underline"
             >
@@ -146,6 +147,7 @@ export function ProductFilters({
 
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
+          type="button"
           onClick={() => toggleSection("sort")}
           aria-expanded={expandedSections.sort}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
@@ -158,6 +160,7 @@ export function ProductFilters({
         </button>
         <div className={cn("pt-3", expandedSections.sort ? "block" : "hidden", "lg:block")}>
           <select
+            aria-label="Sort products"
             value={sort}
             onChange={(event) => onSortChange(event.target.value as ProductSort)}
             className="w-full rounded-sm border border-outline bg-transparent px-3 py-2 font-body text-xs uppercase text-charcoal/80"
@@ -172,6 +175,7 @@ export function ProductFilters({
 
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
+          type="button"
           onClick={() => toggleSection("size")}
           aria-expanded={expandedSections.size}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
@@ -185,6 +189,7 @@ export function ProductFilters({
         <div className={cn("space-y-2 pt-3", expandedSections.size ? "block" : "hidden", "lg:block")}>
           {sizeOptions.map((size) => (
             <button
+              type="button"
               key={size}
               onClick={() => onToggleSize(size)}
               className={cn(
@@ -202,6 +207,7 @@ export function ProductFilters({
 
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
+          type="button"
           onClick={() => toggleSection("category")}
           aria-expanded={expandedSections.category}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
@@ -218,6 +224,7 @@ export function ProductFilters({
         <div className={cn("space-y-2 pt-3", expandedSections.category ? "block" : "hidden", "lg:block")}>
           {categoryOptions.map((category) => (
             <button
+              type="button"
               key={category}
               onClick={() => onCategoryChange(category)}
               className={cn(
@@ -235,6 +242,7 @@ export function ProductFilters({
 
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
+          type="button"
           onClick={() => toggleSection("price")}
           aria-expanded={expandedSections.price}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
@@ -252,6 +260,7 @@ export function ProductFilters({
         </button>
         <div className={cn("pt-3", expandedSections.price ? "block" : "hidden", "lg:block")}>
           <input
+            aria-label="Minimum price"
             type="range"
             min={100}
             max={maxAvailablePrice}
@@ -261,6 +270,7 @@ export function ProductFilters({
             className="w-full accent-accent"
           />
           <input
+            aria-label="Maximum price"
             type="range"
             min={100}
             max={maxAvailablePrice}
@@ -274,6 +284,7 @@ export function ProductFilters({
 
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
+          type="button"
           onClick={() => toggleSection("color")}
           aria-expanded={expandedSections.color}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"
@@ -287,6 +298,7 @@ export function ProductFilters({
         <div className={cn("flex flex-wrap gap-2 pt-3", expandedSections.color ? "flex" : "hidden", "lg:flex")}>
           {colorOptions.map((color) => (
             <button
+              type="button"
               key={color}
               onClick={() => onToggleColor(color)}
               className={cn(
@@ -304,6 +316,7 @@ export function ProductFilters({
 
       <div className="border-t border-outline/60 pt-4 lg:border-0 lg:pt-0">
         <button
+          type="button"
           onClick={() => toggleSection("material")}
           aria-expanded={expandedSections.material}
           className="flex w-full items-center justify-between text-left lg:pointer-events-none"

@@ -21,6 +21,7 @@
 
   body {
     @apply text-foreground;
+    line-height: 1.5;
   }
 
   h1,
@@ -48,7 +49,7 @@
   }
 
   :focus-visible {
-    outline: 1.5px solid rgb(var(--focus));
+    outline: 2px solid rgb(var(--focus));
     outline-offset: 4px;
   }
 
@@ -60,7 +61,21 @@
 
   input::placeholder,
   textarea::placeholder {
-    color: rgba(38, 37, 32, 0.52);
+    color: rgba(38, 37, 32, 0.64);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

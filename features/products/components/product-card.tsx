@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { memo } from "react";
 
 import { Button } from "@/components/ui/button";
 import { FallbackImage } from "@/components/ui/fallback-image";
@@ -15,7 +16,7 @@ interface ProductCardProps {
   priority?: boolean;
 }
 
-export function ProductCard({ product, priority = false }: ProductCardProps) {
+function ProductCardComponent({ product, priority = false }: ProductCardProps) {
   const addToCart = useShopStore((state) => state.addToCart);
   const setSelectedProduct = useShopStore((state) => state.setSelectedProduct);
   const images = getSafeProductImages(product.images);
@@ -23,7 +24,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const secondaryImage = images[1];
 
   return (
-    <article className="group flex h-full flex-col">
+    <article className="group flex h-full flex-col rounded-sm border border-outline/70 bg-surface p-3 sm:p-4">
       <Link
         href={`/product/${product.id}`}
         onClick={() => setSelectedProduct(product.id)}
@@ -34,7 +35,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           <motion.div
             whileHover={{ scale: 1.025 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="relative h-full w-full"
+            className="relative h-full w-full"
           >
             <FallbackImage
               src={primaryImage}
@@ -65,19 +66,20 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
       </Link>
 
-      <div className="mt-4 flex flex-1 flex-col gap-4">
-        <div className="space-y-1">
-          <p className="font-heading text-2xl leading-tight text-foreground md:text-[1.7rem]">
+      <div className="mt-4 flex flex-1 flex-col gap-5">
+        <div className="space-y-2">
+          <p className="font-heading text-[1.65rem] leading-tight text-foreground md:text-[1.75rem]">
             {product.name}
           </p>
-          <p className="font-body text-xs text-charcoal/70">{product.material}</p>
-          <p className="font-body text-sm text-foreground">
+          <p className="font-body text-xs uppercase tracking-wide text-charcoal/70">{product.material}</p>
+          <p className="font-body text-sm font-medium text-foreground">
             {formatCurrency(product.price)}
           </p>
         </div>
 
         <Button
           className="mt-auto w-full"
+          aria-label={`Add ${product.name} to bag`}
           onClick={() =>
             addToCart(product, {
               size: product.sizes[0],
@@ -91,3 +93,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
     </article>
   );
 }
+
+export const ProductCard = memo(ProductCardComponent);
+
+ProductCard.displayName = "ProductCard";

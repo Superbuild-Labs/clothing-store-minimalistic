@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { FormEvent, useEffect, useId, useState } from "react";
 
+import { LogoutButton } from "@/components/auth/logout-button";
 import { Container } from "@/components/ui/container";
 import { LogoMark } from "@/components/ui/logo-mark";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,11 @@ const navLinks = [
   { href: "/about", label: "About" },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  isAuthenticated: boolean;
+}
+
+export function Navbar({ isAuthenticated }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const isScrolled = useScrollState(18);
@@ -116,6 +121,16 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center gap-4 sm:gap-5">
+          {isAuthenticated ? (
+            <LogoutButton
+              className={cn(
+                "hidden md:inline-flex",
+                transparentState
+                  ? "border-surface/45 bg-transparent text-surface hover:border-surface hover:bg-surface/10 hover:text-surface"
+                  : "",
+              )}
+            />
+          ) : null}
           <button
             type="button"
             aria-label="Search"
@@ -131,13 +146,6 @@ export function Navbar() {
               className={cn("inline-flex h-10 w-10 items-center justify-center rounded-sm transition-colors", iconClass)}
           >
             <Search size={18} />
-          </button>
-          <button
-            type="button"
-            aria-label="Account"
-              className={cn("hidden h-10 w-10 items-center justify-center rounded-sm transition-colors md:inline-flex", iconClass)}
-          >
-            <User size={18} />
           </button>
           <button
             type="button"
@@ -230,9 +238,14 @@ export function Navbar() {
               >
                 Search
               </Link>
+              {isAuthenticated ? (
+                <LogoutButton
+                  className="w-full justify-start border-outline bg-surface px-3 text-charcoal/80 hover:border-charcoal hover:text-foreground"
+                />
+              ) : null}
               {navLinks.map((link) => (
                 <Link
-                  key={link.href + "-mobile"}
+                  key={link.href + link.label + "-mobile"}
                   href={link.href}
                   className="block rounded-sm px-2 py-3 font-body text-xs uppercase text-charcoal/80 transition-colors hover:bg-surface hover:text-foreground"
                 >

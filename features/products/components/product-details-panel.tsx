@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import { TrustStrip } from "@/components/ui/trust-strip";
 import { formatCurrency } from "@/lib/currency";
 import { Product } from "@/features/products/types";
 import { cn } from "@/lib/utils";
@@ -74,18 +75,14 @@ export function ProductDetailsPanel({ product }: ProductDetailsPanelProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-px overflow-hidden rounded-sm border border-outline bg-outline">
-        {[
-          ["Delivery", "Ships in 2-3 days"],
-          ["Returns", "14-day window"],
-          ["Assistance", "Size support"],
-        ].map(([title, value]) => (
-          <div key={title} className="bg-surface px-3 py-3">
-            <p className="font-body text-[11px] uppercase text-charcoal/60">{title}</p>
-            <p className="mt-1 font-body text-xs text-foreground">{value}</p>
-          </div>
-        ))}
-      </div>
+      <TrustStrip
+        compact
+        signals={[
+          { title: "Delivery", description: "Ships in 2-3 days" },
+          { title: "Returns", description: "14-day returns" },
+          { title: "Client Care", description: "Personal fit guidance" },
+        ]}
+      />
 
       <div>
         <div className="mb-3 flex items-center justify-between gap-4">

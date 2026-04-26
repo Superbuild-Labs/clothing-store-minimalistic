@@ -6,15 +6,14 @@ import { useRouter } from "next/navigation";
 
 import { buttonClassName, Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { FormField } from "@/components/ui/form-field";
 import { Heading } from "@/components/ui/heading";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Section } from "@/components/ui/section";
 import { FallbackImage } from "@/components/ui/fallback-image";
+import { TrustStrip } from "@/components/ui/trust-strip";
 import { formatCurrency } from "@/lib/currency";
 import { useShopStore } from "@/store/use-store";
-
-const fieldClassName =
-  "h-11 w-full rounded-sm border border-outline bg-background px-3 font-body text-sm transition-colors focus:border-charcoal focus:outline-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-focus";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -67,79 +66,34 @@ export default function CheckoutPage() {
           ) : (
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
               <form onSubmit={handleSubmit} className="space-y-6 rounded-sm border border-outline bg-surface p-6 sm:p-8">
+                <TrustStrip
+                  compact
+                  signals={[
+                    { title: "Checkout", description: "Secure session" },
+                    { title: "Shipping", description: shipping === 0 ? "Complimentary" : "Flat $15" },
+                    { title: "Returns", description: "14-day returns" },
+                  ]}
+                />
+
                 <fieldset className="space-y-4">
                   <legend className="font-body text-xs uppercase text-charcoal/75">
                     Contact
                   </legend>
-                  <input
-                    type="text"
-                    name="fullName"
-                    required
-                    autoComplete="name"
-                    placeholder="Full name"
-                    className={fieldClassName}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    autoComplete="email"
-                    placeholder="Email"
-                    className={fieldClassName}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    autoComplete="tel"
-                    placeholder="Phone (optional)"
-                    className={fieldClassName}
-                  />
+                  <FormField label="Full name" type="text" name="fullName" required autoComplete="name" placeholder="Full name" />
+                  <FormField label="Email" type="email" name="email" required autoComplete="email" placeholder="Email" />
+                  <FormField label="Phone" type="tel" name="phone" autoComplete="tel" placeholder="Phone (optional)" />
                 </fieldset>
 
                 <fieldset className="space-y-4">
                   <legend className="font-body text-xs uppercase text-charcoal/75">
                     Delivery Address
                   </legend>
-                  <input
-                    type="text"
-                    name="addressLine1"
-                    required
-                    autoComplete="address-line1"
-                    placeholder="Address line 1"
-                    className={fieldClassName}
-                  />
-                  <input
-                    type="text"
-                    name="addressLine2"
-                    autoComplete="address-line2"
-                    placeholder="Address line 2 (optional)"
-                    className={fieldClassName}
-                  />
+                  <FormField label="Address line 1" type="text" name="addressLine1" required autoComplete="address-line1" placeholder="Address line 1" />
+                  <FormField label="Address line 2" type="text" name="addressLine2" autoComplete="address-line2" placeholder="Address line 2 (optional)" />
                   <div className="grid gap-3 sm:grid-cols-3">
-                    <input
-                      type="text"
-                      name="city"
-                      required
-                      autoComplete="address-level2"
-                      placeholder="City"
-                      className={fieldClassName}
-                    />
-                    <input
-                      type="text"
-                      name="state"
-                      required
-                      autoComplete="address-level1"
-                      placeholder="State"
-                      className={fieldClassName}
-                    />
-                    <input
-                      type="text"
-                      name="postalCode"
-                      required
-                      autoComplete="postal-code"
-                      placeholder="ZIP"
-                      className={fieldClassName}
-                    />
+                    <FormField label="City" type="text" name="city" required autoComplete="address-level2" placeholder="City" />
+                    <FormField label="State" type="text" name="state" required autoComplete="address-level1" placeholder="State" />
+                    <FormField label="ZIP" type="text" name="postalCode" required autoComplete="postal-code" placeholder="ZIP" />
                   </div>
                 </fieldset>
 
@@ -175,7 +129,7 @@ export default function CheckoutPage() {
                         />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate font-heading text-2xl leading-none text-foreground">{item.name}</p>
+                        <p className="truncate font-heading text-xl leading-tight text-foreground">{item.name}</p>
                         <p className="mt-1 font-body text-xs text-charcoal/70">
                           {[item.color, item.size].filter(Boolean).join(" / ") || "Standard"}
                         </p>

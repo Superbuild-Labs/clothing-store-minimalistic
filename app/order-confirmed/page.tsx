@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Section } from "@/components/ui/section";
+import { TrustStrip } from "@/components/ui/trust-strip";
 
 function OrderConfirmedContent() {
   const searchParams = useSearchParams();
@@ -30,6 +31,15 @@ function OrderConfirmedContent() {
               Order Number
             </p>
             <p className="mt-2 font-heading text-5xl leading-none text-foreground">{orderNumber}</p>
+
+            <TrustStrip
+              className="mt-7"
+              signals={[
+                { title: "Confirmation", description: "Email sent instantly" },
+                { title: "Dispatch", description: "Ships in 2-3 days" },
+                { title: "Returns", description: "14-day return window" },
+              ]}
+            />
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link href="/shop" className={buttonClassName()}>

@@ -14,7 +14,7 @@ export function ProductGrid({ products, className }: ProductGridProps) {
         <ProductCard
           key={product.id}
           product={product}
-          priority={index < 2}
+          priority={index === 0}
         />
       ))}
     </div>
