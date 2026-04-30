@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { FormEvent, useEffect, useId, useState } from "react";
@@ -17,7 +17,6 @@ import { useCartCount, useShopStore } from "@/store/use-store";
 const navLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/shop?category=Outerwear", label: "New Arrivals" },
-  { href: "/shop", label: "Collections" },
   { href: "/about", label: "About" },
 ];
 
@@ -27,6 +26,7 @@ interface NavbarProps {
 
 export function Navbar({ isAuthenticated }: NavbarProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const isScrolled = useScrollState(18);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,8 +68,17 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
       <Container className="relative flex h-20 items-center justify-between">
         <nav className="hidden items-center gap-8 lg:gap-10 md:flex">
           {navLinks.map((link) => {
-            const linkPath = link.href.split("?")[0];
-            const isActive = pathname === linkPath;
+            const [linkPath, linkQuery] = link.href.split("?");
+            const isPathActive = pathname === linkPath;
+            
+            let isActive = false;
+            if (linkQuery) {
+              const params = new URLSearchParams(linkQuery);
+              isActive = isPathActive && Array.from(params.entries()).every(([key, value]) => searchParams.get(key) === value);
+            } else {
+              // Only active if path matches and there are no search params (except maybe scroll/hash which aren't in searchParams)
+              isActive = isPathActive && searchParams.toString() === "";
+            }
             return (
               <Link
                 key={link.href + link.label}

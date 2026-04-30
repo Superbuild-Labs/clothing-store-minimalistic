@@ -36,10 +36,15 @@ export default function CheckoutPage() {
       return;
     }
 
-    setIsSubmitting(true);
-    const orderNumber = `ELV-${Math.floor(100000 + Math.random() * 900000)}`;
-    clearCart();
-    router.push(`/order-confirmed?order=${orderNumber}`);
+    try {
+      setIsSubmitting(true);
+      const orderNumber = `ELV-${Math.floor(100000 + Math.random() * 900000)}`;
+      clearCart();
+      router.push(`/order-confirmed?order=${orderNumber}`);
+    } catch (error) {
+      console.error("Checkout error:", error);
+      setIsSubmitting(false);
+    }
   };
 
   return (

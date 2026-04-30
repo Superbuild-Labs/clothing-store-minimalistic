@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { memo } from "react";
+import { memo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { FallbackImage } from "@/components/ui/fallback-image";
@@ -19,6 +19,7 @@ interface ProductCardProps {
 function ProductCardComponent({ product, priority = false }: ProductCardProps) {
   const addToCart = useShopStore((state) => state.addToCart);
   const setSelectedProduct = useShopStore((state) => state.setSelectedProduct);
+  const [isAdding, setIsAdding] = useState(false);
   const images = getSafeProductImages(product.images);
   const primaryImage = images[0];
   const secondaryImage = images[1];
@@ -80,14 +81,17 @@ function ProductCardComponent({ product, priority = false }: ProductCardProps) {
         <Button
           className="mt-auto w-full"
           aria-label={`Add ${product.name} to bag`}
-          onClick={() =>
+          disabled={isAdding}
+          onClick={() => {
+            setIsAdding(true);
             addToCart(product, {
               size: product.sizes[0],
               color: product.colors[0],
-            })
-          }
+            });
+            setTimeout(() => setIsAdding(false), 500);
+          }}
         >
-          Add to Bag
+          {isAdding ? "Adding..." : "Add to Bag"}
         </Button>
       </div>
     </article>

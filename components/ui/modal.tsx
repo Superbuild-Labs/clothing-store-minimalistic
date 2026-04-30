@@ -1,10 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useEffect, useId, useRef } from "react";
+import { ReactNode, useId } from "react";
 import { X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { useFocusTrap } from "@/hooks/use-focus-trap";
 
 interface ModalProps {
   open: boolean;
@@ -15,72 +16,8 @@ interface ModalProps {
 }
 
 export function Modal({ open, title, children, onClose, className }: ModalProps) {
-  const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useFocusTrap<HTMLDivElement>({ isOpen: open, onClose });
   const titleId = useId();
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const previousActiveElement = document.activeElement as HTMLElement | null;
-    const focusableSelector = [
-      "a[href]",
-      "button:not([disabled])",
-      "textarea:not([disabled])",
-      'input:not([disabled]):not([type="hidden"])',
-      "select:not([disabled])",
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(",");
-
-    const getFocusable = () => {
-      if (!dialogRef.current) {
-        return [] as HTMLElement[];
-      }
-
-      return Array.from(dialogRef.current.querySelectorAll<HTMLElement>(focusableSelector));
-    };
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-
-      if (event.key !== "Tab") {
-        return;
-      }
-
-      const focusable = getFocusable();
-      if (focusable.length === 0) {
-        event.preventDefault();
-        return;
-      }
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const activeElement = document.activeElement as HTMLElement | null;
-
-      if (event.shiftKey && activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-
-    requestAnimationFrame(() => dialogRef.current?.focus());
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-      previousActiveElement?.focus();
-    };
-  }, [open, onClose]);
 
   return (
     <AnimatePresence>

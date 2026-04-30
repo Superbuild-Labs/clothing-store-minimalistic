@@ -24,8 +24,12 @@ export function Footer() {
       return;
     }
 
-    setIsSubmitted(true);
-    setEmail("");
+    try {
+      setIsSubmitted(true);
+      setEmail("");
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+    }
   };
 
   return (

@@ -1,13 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useId, useRef } from "react";
+import { useId } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/currency";
 import { useCartSubtotal, useShopStore } from "@/store/use-store";
 import { CartLineItem } from "@/features/cart/components/cart-line-item";
+import { useFocusTrap } from "@/hooks/use-focus-trap";
 
 export function CartDrawer() {
   const router = useRouter();
@@ -17,81 +18,8 @@ export function CartDrawer() {
   const updateItemQuantity = useShopStore((state) => state.updateItemQuantity);
   const removeFromCart = useShopStore((state) => state.removeFromCart);
   const subtotal = useCartSubtotal();
-  const drawerRef = useRef<HTMLElement>(null);
+  const drawerRef = useFocusTrap<HTMLElement>({ isOpen: isCartOpen, onClose: closeCart });
   const headingId = useId();
-
-  useEffect(() => {
-    if (!isCartOpen) {
-      return;
-    }
-
-    const previousActiveElement = document.activeElement as HTMLElement | null;
-    const focusableSelector = [
-      "a[href]",
-      "button:not([disabled])",
-      "textarea:not([disabled])",
-      'input:not([disabled]):not([type="hidden"])',
-      "select:not([disabled])",
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(",");
-
-    const getFocusable = () => {
-      if (!drawerRef.current) {
-        return [] as HTMLElement[];
-      }
-
-      return Array.from(
-        drawerRef.current.querySelectorAll<HTMLElement>(focusableSelector),
-      ).filter((element) => !element.hasAttribute("disabled") && !element.getAttribute("aria-hidden"));
-    };
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeCart();
-        return;
-      }
-
-      if (event.key !== "Tab") {
-        return;
-      }
-
-      const focusable = getFocusable();
-      if (focusable.length === 0) {
-        event.preventDefault();
-        return;
-      }
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const activeElement = document.activeElement as HTMLElement | null;
-
-      if (event.shiftKey && activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-
-    requestAnimationFrame(() => {
-      const focusable = getFocusable();
-      if (focusable.length > 0) {
-        focusable[0].focus();
-      } else {
-        drawerRef.current?.focus();
-      }
-    });
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-      previousActiveElement?.focus();
-    };
-  }, [isCartOpen, closeCart]);
 
   const hasCartItems = cartItems.length > 0;
   const shipping = hasCartItems ? (subtotal > 500 ? 0 : 15) : 0;
@@ -120,6 +48,7 @@ export function CartDrawer() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={headingId}
+            aria-label="Shopping bag"
             tabIndex={-1}
             className="fixed right-0 top-0 z-[80] flex h-full w-full max-w-md flex-col border-l border-outline bg-background focus:outline-none"
           >
@@ -185,21 +114,21 @@ export function CartDrawer() {
                     <span>{formatCurrency(estimatedTax)}</span>
                   </div>
                 </div>
- 
+
                 <div className="flex items-center justify-between border-t border-outline pt-4">
                   <p className="font-heading text-3xl text-foreground">Total</p>
                   <p className="font-heading text-3xl text-foreground">{formatCurrency(total)}</p>
                 </div>
 
-                  <Button
-                    className="w-full"
-                    onClick={() => {
-                      closeCart();
-                      router.push("/checkout");
-                    }}
-                  >
-                    Continue to Checkout
-                  </Button>
+                <Button
+                  className="w-full"
+                  onClick={() => {
+                    closeCart();
+                    router.push("/checkout");
+                  }}
+                >
+                  Continue to Checkout
+                </Button>
               </footer>
             ) : null}
           </motion.aside>

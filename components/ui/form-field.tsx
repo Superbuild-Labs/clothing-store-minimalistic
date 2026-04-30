@@ -21,7 +21,7 @@ export function FormField({
 
   return (
     <div className={cn("space-y-2", wrapperClassName)}>
-      <label htmlFor={inputId} className="font-body text-xs uppercase tracking-wide text-charcoal/75">
+      <label htmlFor={inputId} className="font-body text-xs uppercase tracking-[0.16em] text-charcoal/82">
         {label}
         {required ? <span aria-hidden="true"> *</span> : null}
       </label>
@@ -31,8 +31,8 @@ export function FormField({
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${inputId}-error` : undefined}
         className={cn(
-          "h-11 w-full rounded-sm border bg-background px-3 font-body text-sm transition-colors focus:border-charcoal focus:outline-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-focus",
-          error ? "border-charcoal/70" : "border-outline",
+          "h-11 w-full rounded-sm border bg-surface px-3 font-body text-sm text-foreground shadow-[0_1px_0_rgba(38,37,32,0.02)] transition-colors focus:border-charcoal focus:outline-none focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-focus",
+          error ? "border-charcoal/70" : "border-outline/90",
           className,
         )}
         {...props}

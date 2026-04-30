@@ -61,7 +61,7 @@
 
   input::placeholder,
   textarea::placeholder {
-    color: rgba(38, 37, 32, 0.64);
+    color: rgba(38, 37, 32, 0.74);
   }
 
   @media (prefers-reduced-motion: reduce) {

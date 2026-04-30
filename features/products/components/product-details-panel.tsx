@@ -31,6 +31,7 @@ export function ProductDetailsPanel({ product }: ProductDetailsPanelProps) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const addToCart = useShopStore((state) => state.addToCart);
   const accordionId = useId();
   const relevantSizeRows = sizeGuideRows.filter((row) => product.sizes.includes(row.size));
@@ -140,14 +141,17 @@ export function ProductDetailsPanel({ product }: ProductDetailsPanelProps) {
       <Button
         size="lg"
         className="w-full"
-        onClick={() =>
+        disabled={isAdding}
+        onClick={() => {
+          setIsAdding(true);
           addToCart(product, {
             size: selectedSize,
             color: selectedColor,
-          })
-        }
+          });
+          setTimeout(() => setIsAdding(false), 500);
+        }}
       >
-        Add to Bag
+        {isAdding ? "Adding..." : "Add to Bag"}
       </Button>
       <p className="-mt-5 font-body text-xs leading-relaxed text-charcoal/70">
         Secure checkout. Duties and delivery timing are confirmed before order placement.
