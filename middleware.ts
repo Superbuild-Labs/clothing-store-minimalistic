@@ -9,16 +9,18 @@ export async function middleware(request: NextRequest) {
   const sessionToken = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   const session = await readSession(sessionToken);
 
-  if (!session && !isLoginRoute) {
-    const loginUrl = new URL("/login", request.url);
-    const nextPath = `${pathname}${search}`;
+  // Disable mandatory login redirect so the landing page and storefront are publicly accessible.
+  // if (!session && !isLoginRoute) {
+  //   const loginUrl = new URL("/login", request.url);
+  //   const nextPath = `${pathname}${search}`;
+  // 
+  //   if (nextPath && nextPath !== "/") {
+  //     loginUrl.searchParams.set("next", nextPath);
+  //   }
+  // 
+  //   return NextResponse.redirect(loginUrl);
+  // }
 
-    if (nextPath && nextPath !== "/") {
-      loginUrl.searchParams.set("next", nextPath);
-    }
-
-    return NextResponse.redirect(loginUrl);
-  }
 
   if (session && isLoginRoute) {
     return NextResponse.redirect(new URL("/", request.url));

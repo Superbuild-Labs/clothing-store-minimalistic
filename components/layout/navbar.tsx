@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Search, ShoppingBag, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X, Sun, Moon } from "lucide-react";
 import { FormEvent, useEffect, useId, useState } from "react";
 
 import { LogoutButton } from "@/components/auth/logout-button";
@@ -36,6 +36,27 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
   const menuPanelId = useId();
   const cartCount = useCartCount();
   const openCart = useShopStore((state) => state.openCart);
+
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+  }, []);
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      setTheme("light");
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -130,6 +151,16 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
         </Link>
 
         <div className="flex items-center gap-4 sm:gap-5">
+          {mounted && (
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className={cn("inline-flex h-10 w-10 items-center justify-center rounded-sm transition-colors", iconClass)}
+            >
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+          )}
           {isAuthenticated ? (
             <LogoutButton
               className={cn(
@@ -139,7 +170,19 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
                   : "",
               )}
             />
-          ) : null}
+          ) : (
+            <Link
+              href="/login"
+              className={cn(
+                "hidden md:inline-flex items-center justify-center font-body text-xs uppercase tracking-wider py-2 px-4 border rounded-sm transition-colors",
+                transparentState
+                  ? "border-surface/45 bg-transparent text-surface hover:border-surface hover:bg-surface/10 hover:text-surface"
+                  : "border-outline bg-transparent text-foreground hover:bg-surface-alt"
+              )}
+            >
+              Sign In
+            </Link>
+          )}
           <button
             type="button"
             aria-label="Search"
@@ -247,11 +290,38 @@ export function Navbar({ isAuthenticated }: NavbarProps) {
               >
                 Search
               </Link>
+              {mounted && (
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="flex w-full items-center justify-between rounded-sm px-2 py-3 font-body text-xs uppercase text-charcoal/80 transition-colors hover:bg-surface hover:text-foreground"
+                >
+                  <span>Theme</span>
+                  <span className="flex items-center gap-1.5 text-accent font-medium">
+                    {theme === "light" ? (
+                      <>
+                        <Moon size={14} /> Dark
+                      </>
+                    ) : (
+                      <>
+                        <Sun size={14} /> Light
+                      </>
+                    )}
+                  </span>
+                </button>
+              )}
               {isAuthenticated ? (
                 <LogoutButton
                   className="w-full justify-start border-outline bg-surface px-3 text-charcoal/80 hover:border-charcoal hover:text-foreground"
                 />
-              ) : null}
+              ) : (
+                <Link
+                  href="/login"
+                  className="block rounded-sm border border-outline bg-surface px-3 py-3 text-center font-body text-xs uppercase text-charcoal/80 transition-colors hover:border-charcoal hover:text-foreground"
+                >
+                  Sign In
+                </Link>
+              )}
               {navLinks.map((link) => (
                 <Link
                   key={link.href + link.label + "-mobile"}

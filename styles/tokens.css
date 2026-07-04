@@ -12,3 +12,19 @@
   --editorial-highlight: 223 215 204;
   --focus: 111 106 93;
 }
+
+.dark {
+  --background: 18 18 16;
+  --foreground: 230 227 220;
+  --surface: 26 26 24;
+  --surface-alt: 34 33 30;
+  --surface-soft: 45 44 40;
+  --surface-strong: 58 56 52;
+  --outline: 48 46 42;
+  --accent: 170 162 153;
+  --gold: 185 161 126;
+  --charcoal: 240 238 233;
+  --editorial-highlight: 38 36 32;
+  --focus: 160 152 135;
+}
+
